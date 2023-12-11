@@ -8,6 +8,8 @@ const LogInForm = ({setLoginInUser}) => {
     const [name,setName] = useState("");
     const [password,setPassword] = useState();
 
+    
+
     const validateUser = async (password) => {
         try{
         const response = await fetch(`http://localhost:8080/users/${password}`);
