@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SignUpForm from "../components/SignUpForm";
+import LogInForm from "../components/LogInForm";
 
 const ChatRoomContainer = () => {
     
@@ -15,13 +16,13 @@ const ChatRoomContainer = () => {
           });        
     }
 
-    // useEffect(() => {
-    //     setLoginInUser(1)
-    // },[])
+    useEffect(() => {
+        console.log(clientUser)
+    },[clientUser])
 
     return (
         <>
-            <SignUpForm setLoginInUser={setLoginInUser} />
+            <LogInForm setLoginInUser={setLoginInUser} />
         </>
     );
 }
