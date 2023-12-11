@@ -48,6 +48,10 @@ const ChatRoomContainer = () => {
         setChatRooms([...userChatRooms]);
     }
 
+    const getAllUsers = async () => {
+        const response = await fetch();
+    }
+
     useEffect(() => {
         clientUserId();
         getAllUserChatRooms();
