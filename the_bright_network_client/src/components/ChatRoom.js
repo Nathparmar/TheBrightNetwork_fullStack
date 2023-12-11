@@ -1,6 +1,9 @@
 const ChatRoom = ({chatRoomName}) => {
     return (
-        <p>{chatRoomName}</p>
+        <section className="chat-room">
+       
+        <button className="chat-room-btn">{chatRoomName}</button>
+        </section>
     );
 }
  

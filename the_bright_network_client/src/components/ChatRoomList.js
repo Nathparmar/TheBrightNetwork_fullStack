@@ -15,8 +15,8 @@ const ChatRoomList = ({chatRooms}) => {
 
     return ( 
         <>
-            <h2>Welcome to your BNTA Chat Rooms</h2>
-            <ul>{clientUser ? clientUser.name : "No user ID available"}</ul>
+            <h2 className="main-header" >Welcome to your BNTA Chat Rooms</h2>
+            <ul className="client-name">{clientUser ? clientUser.name : "No user ID available"}</ul>
             <ul>{chatRoomData}</ul>
             </>
     );

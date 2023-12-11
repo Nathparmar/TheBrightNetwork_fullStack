@@ -14,7 +14,7 @@ const LogInForm = ({setLoginInUser}) => {
         try{
         const response = await fetch(`http://localhost:8080/users/${password}`);
         const jsonData = await response.json();
-        if(jsonData.name===name){
+        if(jsonData.name === name){
             setLoginInUser(password);
             navigate("/main-page");
         }else{
@@ -60,7 +60,7 @@ const LogInForm = ({setLoginInUser}) => {
 
     <section>
         <Outlet />
-        <h2>Add a new user:</h2>
+        <h2>Log in to chatroom:</h2>
         <form onSubmit={(event) => handleFormSubmit(event)}>
             <label htmlFor="name-input">Name:</label>
             <input
