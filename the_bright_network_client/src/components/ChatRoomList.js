@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ClientUserContext } from "../containers/ChatRoomContainer";
+import ChatRoom from "./ChatRoom";
 
 const ChatRoomList = ({chatRooms}) => {
 
@@ -7,17 +8,16 @@ const ChatRoomList = ({chatRooms}) => {
     const clientUser = useContext(ClientUserContext);
     console.log(chatRooms);
 
+    const chatRoomData = chatRooms.map((chatRoom) => (
+       <ChatRoom key={chatRoom.id} chatRoomName={chatRoom.name}/>
+    ))
+
+
     return ( 
         <>
-            <h2>Test</h2>
-            <ul>{clientUser ? clientUser.id : "No user ID available"}</ul>
-            <p>
-                {chatRooms.map((chatRoom) => (
-                <div key={chatRoom.id}>
-                <p>Name: {chatRoom.name}</p>
-                </div>
-            ))}
-            </p>        
+            <h2>Welcome to your BNTA Chat Rooms</h2>
+            <ul>{clientUser ? clientUser.name : "No user ID available"}</ul>
+            <ul>{chatRoomData}</ul>
             </>
     );
 }
