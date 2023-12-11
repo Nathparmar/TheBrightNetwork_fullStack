@@ -37,15 +37,20 @@ const ChatRoomContainer = () => {
         
     }
 
-    const getAllChatRooms = async () => {
+    const getAllUserChatRooms = async () => {
         const response = await fetch(`http://localhost:8080/chatrooms`);
         const jsonData = await response.json();
-        
-        setChatRooms(jsonData);
+        const userChatRooms = jsonData.filter((chatRoom) => {
+            const subscriptions = chatRoom.subscriptions || [];
+            return subscriptions.some((subscription) => subscription.user.id === clientUser.id);
+        });
+
+        setChatRooms([...userChatRooms]);
     }
 
     useEffect(() => {
         clientUserId();
+        getAllUserChatRooms();
     },[clientUser])
 
     // useEffect(() => {
