@@ -1,6 +1,9 @@
 import { useState } from "react"
+import { Outlet, useNavigate } from "react-router-dom";
 
 const LogInForm = ({setLoginInUser}) => {
+
+    const navigate = useNavigate();
 
     const [name,setName] = useState("");
     const [password,setPassword] = useState();
@@ -11,6 +14,7 @@ const LogInForm = ({setLoginInUser}) => {
         const jsonData = await response.json();
         if(jsonData.name===name){
             setLoginInUser(password);
+            navigate("/main-page");
         }else{
             throw new Error("Invalid");
         }
@@ -27,7 +31,7 @@ const LogInForm = ({setLoginInUser}) => {
         setPassword(event.target.value);
     }
 
-    const handleFromSubmit = (event) => {
+    const handleFormSubmit = (event) => {
         
         if(!name || !password){
             alert("Need to provide all details")
@@ -51,9 +55,11 @@ const LogInForm = ({setLoginInUser}) => {
     }
 
     return ( 
+
     <section>
+        <Outlet />
         <h2>Add a new user:</h2>
-        <form onSubmit={(event) => handleFromSubmit(event)}>
+        <form onSubmit={(event) => handleFormSubmit(event)}>
             <label htmlFor="name-input">Name:</label>
             <input
                 type="text"

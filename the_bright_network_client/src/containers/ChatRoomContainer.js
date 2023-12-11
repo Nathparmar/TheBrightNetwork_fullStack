@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import SignUpForm from "../components/SignUpForm";
 import LogInForm from "../components/LogInForm";
+import ChatRoomList from "../components/ChatRoomList";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Home from "../components/Home";
 
 const ChatRoomContainer = () => {
     
@@ -33,9 +37,26 @@ const ChatRoomContainer = () => {
     //     console.log(chatRooms);
     // },[])
 
+    const chatRoomRoutes = createBrowserRouter([
+        {
+            path: "/",
+            element: <Home />,
+            children: [
+                {
+                    path: "/main-page",
+                    element: <ChatRoomList chatRooms={chatRooms} />
+                },
+                {
+                    path: "/login",
+                    element: <LogInForm setLoginInUser={setLoginInUser} />
+                }
+            ]
+        }
+    ])
+
     return (
         <>
-            <LogInForm setLoginInUser={setLoginInUser} />
+            <RouterProvider router = {chatRoomRoutes} />
         </>
     );
 }
