@@ -14,7 +14,6 @@ const ChatRoomList = ({chatRooms}) => {
             <p>
                 {chatRooms.map((chatRoom) => (
                 <div key={chatRoom.id}>
-                <p>ID: {chatRoom.id}</p>
                 <p>Name: {chatRoom.name}</p>
                 </div>
             ))}
