@@ -5,6 +5,7 @@ import LogInForm from "../components/LogInForm";
 const ChatRoomContainer = () => {
     
     const [clientUser,setClientUser] = useState([]);
+    const [chatRooms,setChatRooms] = useState([]);
     
     const setLoginInUser = async (userId) => {
         const response = await fetch(`http://localhost:8080/users/${userId}`);
@@ -16,9 +17,21 @@ const ChatRoomContainer = () => {
           });        
     }
 
-    useEffect(() => {
-        console.log(clientUser)
-    },[clientUser])
+    const getAllChatRooms = async () => {
+        const response = await fetch(`http://localhost:8080/chatrooms`);
+        const jsonData = await response.json();
+        
+        setChatRooms(jsonData);
+    }
+
+    // useEffect(() => {
+    //     console.log(clientUser)
+    // },[clientUser])
+
+    // useEffect(() => {
+    //     getAllChatRooms()
+    //     console.log(chatRooms);
+    // },[])
 
     return (
         <>
