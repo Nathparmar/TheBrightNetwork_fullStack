@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SignUpForm from "../components/SignUpForm";
 
 const ChatRoomContainer = () => {
@@ -8,8 +8,16 @@ const ChatRoomContainer = () => {
     const setLoginInUser = async (userId) => {
         const response = await fetch(`http://localhost:8080/users/${userId}`);
         const jsonData = await response.json();
-        setClientUser(jsonData);
+        setClientUser({
+            name: jsonData.name,
+            id: jsonData.id,
+            role: jsonData.role,
+          });        
     }
+
+    // useEffect(() => {
+    //     setLoginInUser(1)
+    // },[])
 
     return (
         <>
