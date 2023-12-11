@@ -6,10 +6,16 @@ const LogInForm = ({setLoginInUser}) => {
     const [password,setPassword] = useState();
 
     const validateUser = async (password) => {
+        try{
         const response = await fetch(`http://localhost:8080/users/${password}`);
         const jsonData = await response.json();
         if(jsonData.name===name){
             setLoginInUser(password);
+        }else{
+            throw new Error("Invalid");
+        }
+        } catch (error){
+            throw new Error("Invalid");
         }
     }
 
@@ -27,15 +33,11 @@ const LogInForm = ({setLoginInUser}) => {
             alert("Need to provide all details")
             return;
         } else {
-            try{
-                validateUser(password)
-            } catch (error) {
-                alert.error("Invalid details")
-            }
+            validateUser(password).catch((error) => {
+                alert("Invalid details");
+              });
         }
 
-        // if(name == )
-        
         event.preventDefault();
         const newUser = {
             name: name,
