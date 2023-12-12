@@ -1,6 +1,6 @@
 import Message from "./Message";
 import MessageForm from "./MessageForm";
-const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser}) => {
+const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser, addedUsers}) => {
 
     const messageData = chatRoomMessages.map((message) => (
        <Message 
@@ -14,7 +14,7 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser}
     const handleChange = (event) => {
 
         postUser(event.target.value);
-        
+
             
     
         // let propertyName = event.target.name;
@@ -22,12 +22,16 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser}
         // copiedChocolate[propertyName] = event.target.value;
         // setStateChocolate(copiedChocolate);
     }
+
+    const getNames = addedUsers.map((user) => {
+        return <ul>{user.name}</ul>;
+    })
     
     const userOptions = usersNotInChatRoom.map((user) => {
         return <option key = {user.id} value={user.id}> {user.name} </option>
     })
 
-    console.log(userOptions);
+    console.log(addedUsers);
 
     return (
         <>
@@ -47,6 +51,11 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser}
             
             {messageData.reverse()}
            <MessageForm postMessage={postMessage}/>
+
+           <div>
+                {getNames}
+
+           </div>
         </>
     );
 }

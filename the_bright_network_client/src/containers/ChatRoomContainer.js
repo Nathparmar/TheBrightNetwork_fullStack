@@ -26,6 +26,7 @@ const ChatRoomContainer = () => {
     const [currentChatRoom, setCurrentChatRoom] = useState(null);
     const [chatRoomMessages, setChatRoomMessages] = useState([]);
     const [usersNotInChatRoom,setUsersNotInChatRoom] = useState([]);
+    const [addedUsers, setAddedUsers] = useState([]);
 
     const getUsersNotInChatRoom = async () => {
         const response = await fetch(`http://localhost:8080/chatrooms/${currentChatRoom}/users`);
@@ -35,11 +36,23 @@ const ChatRoomContainer = () => {
             
             return !(jsonData.some((chatUser) => user.id === chatUser.userId));
         });
-        
-        
-        setUsersNotInChatRoom([...unAddedUsers])
 
+        const usersInChat = allUsers.filter((user) => {
+            
+            return (jsonData.some((chatUser) => user.id === chatUser.userId));
+        });
+        
+        
+        setUsersNotInChatRoom([...unAddedUsers]);
+        setAddedUsers([...usersInChat]);
+
+        
     }
+    
+
+    
+
+
     
     const clientUserId = () => {
         // const clientData = clientUser.id;
@@ -171,7 +184,13 @@ const ChatRoomContainer = () => {
                     path: "/chatrooms",
                     element: <>
                         <ClientUserContext.Provider value={clientUser}>
-                        <MessageList chatRoomMessages={chatRoomMessages} postMessage={postMessage} usersNotInChatRoom={usersNotInChatRoom} postUser={postUser}/>
+                        <MessageList 
+                            chatRoomMessages={chatRoomMessages} 
+                            postMessage={postMessage} 
+                            usersNotInChatRoom={usersNotInChatRoom} 
+                            postUser={postUser} 
+                            addedUsers={addedUsers}
+                        />
                         </ClientUserContext.Provider>
                     </>
                 }
