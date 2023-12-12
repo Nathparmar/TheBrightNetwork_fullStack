@@ -10,7 +10,15 @@ export const ClientUserContext = createContext();
 
 const ChatRoomContainer = () => {
     
-    const [clientUser,setClientUser] = useState([]);
+    const [clientUser,setClientUser] = useState([
+        
+        {   
+            name: "not logged in",
+            id: null,
+            role: null
+
+        }
+    ]);
     const [chatRooms,setChatRooms] = useState([]);
 
 
@@ -52,10 +60,10 @@ const ChatRoomContainer = () => {
         const response = await fetch();
     }
 
-    useEffect(() => {
-        clientUserId();
-        getAllUserChatRooms();
-    },[clientUser])
+    // useEffect(() => {
+    //     clientUserId();
+    //     getAllUserChatRooms();
+    // },[])
 
     // useEffect(() => {
     //     getAllChatRooms()
