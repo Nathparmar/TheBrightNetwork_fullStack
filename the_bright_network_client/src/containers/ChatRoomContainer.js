@@ -5,6 +5,8 @@ import ChatRoomList from "../components/ChatRoomList";
 import { createBrowserRouter, RouterProvider, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import Home from "../components/Home";
+import MessageList from "../components/MessageList";
+
 
 export const ClientUserContext = createContext();
 
@@ -23,7 +25,7 @@ const ChatRoomContainer = () => {
     const [allUsers,setAllUsers] = useState([]); 
     const [currentChatRoom, setCurrentChatRoom] = useState(null);
     const [chatRoomMessages, setChatRoomMessages] = useState([]);
-    
+    const navigate = useNavigate();
    
     // const ClientUserContext = createContext();
     
@@ -69,7 +71,6 @@ const ChatRoomContainer = () => {
 
     const clickChatRoom = (chatRoomId) => {
         setCurrentChatRoom(chatRoomId);
-        
     }
 
 
@@ -80,11 +81,8 @@ const ChatRoomContainer = () => {
         })
         console.log(clientUser.id);
         const messageData = await response.json();
-        setChatRoomMessages(messageData)
+        setChatRoomMessages([...messageData]);
     }
-
-
-
 
     useEffect(() => {
         clientUserId();
@@ -126,6 +124,14 @@ const ChatRoomContainer = () => {
                     
                         <ClientUserContext.Provider value={clientUser}>
                         <LogInForm setLoginInUser={setLoginInUser} />
+                        </ClientUserContext.Provider>
+                    </>
+                },
+                {
+                    path: "/chatrooms",
+                    element: <>
+                        <ClientUserContext.Provider value={clientUser}>
+                        <MessageList chatRoomMessages={chatRoomMessages}/>
                         </ClientUserContext.Provider>
                     </>
                 }
