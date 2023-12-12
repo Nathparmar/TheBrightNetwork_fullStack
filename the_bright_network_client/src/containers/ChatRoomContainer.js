@@ -84,6 +84,16 @@ const ChatRoomContainer = () => {
         setChatRoomMessages([...messageData]);
     }
 
+    const postMessage = async (newMessage) => {
+        const response = await fetch(`http://localhost:8080/chatrooms/${currentChatRoom}/messages`,{
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(newMessage)
+        })
+        const savedMessage = await response.json();
+        getMessagesByChatRoom(currentChatRoom)
+    }
+
     useEffect(() => {
         clientUserId();
         getAllUserChatRooms();
@@ -131,7 +141,7 @@ const ChatRoomContainer = () => {
                     path: "/chatrooms",
                     element: <>
                         <ClientUserContext.Provider value={clientUser}>
-                        <MessageList chatRoomMessages={chatRoomMessages}/>
+                        <MessageList chatRoomMessages={chatRoomMessages} postMessage={postMessage}/>
                         </ClientUserContext.Provider>
                     </>
                 }

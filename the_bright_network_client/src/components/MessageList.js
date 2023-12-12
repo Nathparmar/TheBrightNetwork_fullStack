@@ -1,5 +1,6 @@
 import Message from "./Message";
-const MessageList = ({chatRoomMessages}) => {
+import MessageForm from "./MessageForm";
+const MessageList = ({chatRoomMessages, postMessage}) => {
     
 
     // const clientUser = useContext(ClientUserContext);
@@ -15,7 +16,8 @@ const MessageList = ({chatRoomMessages}) => {
 
     return (
         <>
-           {messageData}
+           {messageData.reverse()}
+           <MessageForm postMessage={postMessage}/>
         </>
     );
 }
