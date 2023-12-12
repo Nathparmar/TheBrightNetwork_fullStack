@@ -25,9 +25,21 @@ const ChatRoomContainer = () => {
     const [allUsers,setAllUsers] = useState([]); 
     const [currentChatRoom, setCurrentChatRoom] = useState(null);
     const [chatRoomMessages, setChatRoomMessages] = useState([]);
-    // const navigate = useNavigate();
-   
-    // const ClientUserContext = createContext();
+    const [usersNotInChatRoom,setUsersNotInChatRoom] = useState([]);
+
+    const getUsersNotInChatRoom = async () => {
+        const response = await fetch(`http://localhost:8080/chatrooms/${currentChatRoom}/users`);
+        const jsonData = await response.json();
+
+        const unAddedUsers = allUsers.filter((user) => {
+            
+            return !(jsonData.some((chatUser) => user.id === chatUser.userId));
+        });
+        
+        
+        setUsersNotInChatRoom([...unAddedUsers])
+
+    }
     
     const clientUserId = () => {
         // const clientData = clientUser.id;
@@ -47,6 +59,8 @@ const ChatRoomContainer = () => {
       
         
     }
+
+    
 
     const getAllUserChatRooms = async () => {
         const response = await fetch(`http://localhost:8080/chatrooms`);
@@ -79,7 +93,6 @@ const ChatRoomContainer = () => {
             method: "GET",
             headers: {"Content-Type":"application/json"}
         })
-        console.log(clientUser.id);
         const messageData = await response.json();
         setChatRoomMessages([...messageData]);
     }
@@ -104,6 +117,7 @@ const ChatRoomContainer = () => {
     useEffect(() => {
         if(currentChatRoom){
             getMessagesByChatRoom(currentChatRoom);
+            getUsersNotInChatRoom();
         }
         
     },[currentChatRoom])
@@ -140,7 +154,7 @@ const ChatRoomContainer = () => {
                     path: "/chatrooms",
                     element: <>
                         <ClientUserContext.Provider value={clientUser}>
-                        <MessageList chatRoomMessages={chatRoomMessages} postMessage={postMessage}/>
+                        <MessageList chatRoomMessages={chatRoomMessages} postMessage={postMessage} usersNotInChatRoom={usersNotInChatRoom} />
                         </ClientUserContext.Provider>
                     </>
                 }
