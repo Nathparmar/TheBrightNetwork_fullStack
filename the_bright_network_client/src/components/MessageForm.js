@@ -37,16 +37,15 @@ const MessageForm = ({postMessage}) => {
     return ( 
 
     <section>
-        <h2>Log in to chatroom:</h2>
         <form onSubmit={(event) => handleFormSubmit(event)}>
-            <label htmlFor="name-input">Name:</label>
+            <label htmlFor="name-input"></label>
             <input
                 type="text"
                 id= "message-content-input"
                 onChange={handleChange}
                 value={stateMessage.messageContent}
             />
-            <input type="submit" value={"Log in"}/>
+            <input type="submit" value={"Send!"}/>
         </form>
         </section>
         );
