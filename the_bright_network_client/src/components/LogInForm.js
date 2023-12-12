@@ -68,6 +68,7 @@ const LogInForm = ({setLoginInUser}) => {
                 id= "name-input"
                 onInput={(event) => updateUserName(event)}
                 value={name}
+                placeholder="Username"
             />
             <label htmlFor="password-input">Password:</label>
             <input
@@ -75,6 +76,7 @@ const LogInForm = ({setLoginInUser}) => {
                 id="password-input"
                 onInput={(event) => updateUserPassword(event)}
                 value={password}
+                placeholder="Password"
             />
             <input type="submit" value={"Log in"}/>
         </form>

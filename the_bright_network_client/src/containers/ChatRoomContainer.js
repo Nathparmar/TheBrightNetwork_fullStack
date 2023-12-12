@@ -90,7 +90,6 @@ const ChatRoomContainer = () => {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newMessage)
         })
-        const savedMessage = await response.json();
         getMessagesByChatRoom(currentChatRoom)
     }
 

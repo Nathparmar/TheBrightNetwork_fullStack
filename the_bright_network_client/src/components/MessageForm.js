@@ -13,14 +13,16 @@ const MessageForm = ({postMessage}) => {
 
     const handleFormSubmit = (event) => {
         
+        event.preventDefault();
+
         if(stateMessage.messageContent === ""){
+            
             alert("Can't submit empty message")
             return;
         }
 
         postMessage(stateMessage);
 
-        event.preventDefault();
  
         setStateMessage({
             messageContent: "",
@@ -42,6 +44,7 @@ const MessageForm = ({postMessage}) => {
             <input
                 type="text"
                 id= "message-content-input"
+                placeholder="Type your message here:"
                 onChange={handleChange}
                 value={stateMessage.messageContent}
             />
