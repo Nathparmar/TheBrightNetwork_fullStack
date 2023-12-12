@@ -20,10 +20,8 @@ const ChatRoomContainer = () => {
         }
     ]);
     const [chatRooms,setChatRooms] = useState([]);
-
-
+    const [allUsers,setAllUsers] = useState([]); 
    
-
     // const ClientUserContext = createContext();
     
     const clientUserId = () => {
@@ -57,17 +55,25 @@ const ChatRoomContainer = () => {
     }
 
     const getAllUsers = async () => {
-        const response = await fetch();
+        const response = await fetch(`http://localhost:8080/users`);
+        const jsonData = await response.json();
+        const users = jsonData.filter((user) => {
+            return user.id !== clientUser.id
+        });
+
+        setAllUsers([...users])
     }
 
     useEffect(() => {
         clientUserId();
         getAllUserChatRooms();
+        getAllUsers();
+        console.log(allUsers);
+
     },[clientUser])
 
     // useEffect(() => {
-    //     getAllChatRooms()
-    //     console.log(chatRooms);
+    //     console.log(allUsers);
     // },[])
 
     const chatRoomRoutes = createBrowserRouter([
@@ -76,7 +82,7 @@ const ChatRoomContainer = () => {
             element: <>
                     
                     <ClientUserContext.Provider value={clientUser}>
-                    <Home />,
+                    <Home allUsers={allUsers}/>,
                     </ClientUserContext.Provider>
                 </>,
             children: [

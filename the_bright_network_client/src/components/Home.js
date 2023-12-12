@@ -1,7 +1,12 @@
 import {Link, Outlet} from "react-router-dom";
+import UserList from "./UserList";
+import { ClientUserContext } from "../containers/ChatRoomContainer";
+import { useContext } from "react";
 
 
-const Home = () => {
+const Home = ({allUsers}) => {
+    const clientUser = useContext(ClientUserContext);
+
     return ( 
         <>
         <header>
@@ -14,6 +19,9 @@ const Home = () => {
         </>
         <Outlet />
         </header>
+        <>
+            {clientUser.id? <UserList allUsers={allUsers}/>:null}
+        </>
 
         </>
 
