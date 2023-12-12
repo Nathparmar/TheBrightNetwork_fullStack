@@ -2,12 +2,12 @@ import { useContext } from "react";
 import { ClientUserContext } from "../containers/ChatRoomContainer";
 import ChatRoom from "./ChatRoom";
 
-const ChatRoomList = ({chatRooms}) => {
+const ChatRoomList = ({chatRooms, clickChatRoom}) => {
 
     const clientUser = useContext(ClientUserContext);
 
     const chatRoomData = chatRooms.map((chatRoom) => (
-       <ChatRoom key={chatRoom.id} chatRoomName={chatRoom.name}/>
+       <ChatRoom key={chatRoom.id} chatRoomName={chatRoom.name} clickChatRoom={clickChatRoom}/>
     ))
 
     return ( 

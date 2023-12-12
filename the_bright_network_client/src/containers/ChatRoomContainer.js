@@ -2,7 +2,7 @@ import { useEffect, useState ,useContext, createContext } from "react";
 import SignUpForm from "../components/SignUpForm";
 import LogInForm from "../components/LogInForm";
 import ChatRoomList from "../components/ChatRoomList";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import Home from "../components/Home";
 
@@ -21,6 +21,9 @@ const ChatRoomContainer = () => {
     ]);
     const [chatRooms,setChatRooms] = useState([]);
     const [allUsers,setAllUsers] = useState([]); 
+    const [currentChatRoom, setCurrentChatRoom] = useState(null);
+    const [chatRoomMessages, setChatRoomMessages] = useState([]);
+    
    
     // const ClientUserContext = createContext();
     
@@ -64,6 +67,12 @@ const ChatRoomContainer = () => {
         setAllUsers([...users])
     }
 
+    const clickChatRoom = (chatRoom) => {
+        setCurrentChatRoom(chatRoom);
+        
+    }
+
+
     useEffect(() => {
         clientUserId();
         getAllUserChatRooms();
@@ -72,9 +81,9 @@ const ChatRoomContainer = () => {
 
     },[clientUser])
 
-    // useEffect(() => {
-    //     console.log(allUsers);
-    // },[])
+    useEffect(() => {
+        console.log(currentChatRoom);
+    },[currentChatRoom])
 
     const chatRoomRoutes = createBrowserRouter([
         {
@@ -91,7 +100,7 @@ const ChatRoomContainer = () => {
                     element: <>
                     
                         <ClientUserContext.Provider value={clientUser}>
-                        <ChatRoomList chatRooms={chatRooms} />
+                        <ChatRoomList chatRooms={chatRooms} clickChatRoom={clickChatRoom}/>
                         </ClientUserContext.Provider>
                     </>
                 },
