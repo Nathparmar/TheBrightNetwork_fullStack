@@ -101,3 +101,28 @@ header{
 .not-logged-in{
   background-color: white;
 }
+
+
+.wrapper{
+  font-size: large;
+  background-color: white;
+  border: none;
+  color: black;
+
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 25px;
+  box-shadow: 0 9px #999;
+}
+
+.message-list{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 30px 30px 30px 30px;
+  text-align: left;
+
+}
+
+

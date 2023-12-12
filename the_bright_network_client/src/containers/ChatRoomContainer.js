@@ -25,7 +25,7 @@ const ChatRoomContainer = () => {
     const [allUsers,setAllUsers] = useState([]); 
     const [currentChatRoom, setCurrentChatRoom] = useState(null);
     const [chatRoomMessages, setChatRoomMessages] = useState([]);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
    
     // const ClientUserContext = createContext();
     
