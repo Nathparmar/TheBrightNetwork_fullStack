@@ -106,6 +106,23 @@ const ChatRoomContainer = () => {
         getMessagesByChatRoom(currentChatRoom)
     }
 
+    const postUser = async (newUserId) => {
+        const response = await fetch('http://localhost:8080/subscriptions',{
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(
+                {
+                    userId : newUserId,
+                    chatroomId: currentChatRoom
+                }
+            )
+        })
+
+        getUsersNotInChatRoom()
+    }
+
+
+
     useEffect(() => {
         clientUserId();
         getAllUserChatRooms();
@@ -154,7 +171,7 @@ const ChatRoomContainer = () => {
                     path: "/chatrooms",
                     element: <>
                         <ClientUserContext.Provider value={clientUser}>
-                        <MessageList chatRoomMessages={chatRoomMessages} postMessage={postMessage} usersNotInChatRoom={usersNotInChatRoom} />
+                        <MessageList chatRoomMessages={chatRoomMessages} postMessage={postMessage} usersNotInChatRoom={usersNotInChatRoom} postUser={postUser}/>
                         </ClientUserContext.Provider>
                     </>
                 }

@@ -11,16 +11,20 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser}
        />
     ))
 
-    // const handleChange = (event) => {
-    //     null
-    //     // let propertyName = event.target.name;
-    //     // let copiedChocolate = {...stateChocolate};
-    //     // copiedChocolate[propertyName] = event.target.value;
-    //     // setStateChocolate(copiedChocolate);
-    // }
+    const handleChange = (event) => {
+
+        postUser(event.target.value);
+        
+            
+    
+        // let propertyName = event.target.name;
+        // let copiedChocolate = {...stateChocolate};
+        // copiedChocolate[propertyName] = event.target.value;
+        // setStateChocolate(copiedChocolate);
+    }
     
     const userOptions = usersNotInChatRoom.map((user) => {
-        return <option key = {user.id} name={user.name}> {user.name} </option>
+        return <option key = {user.id} value={user.id}> {user.name} </option>
     })
 
     console.log(userOptions);
@@ -34,7 +38,7 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser}
                 id="addUser" 
                 name="addUserButton"
                 defaultValue="Add users"
-                //onChange={handleChange}
+                onChange={handleChange}
             >
                 <option disabled-value="Add Users">Choose an User</option>
                 {userOptions}

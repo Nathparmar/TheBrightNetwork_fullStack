@@ -13,7 +13,7 @@ const ChatRoomList = ({chatRooms, clickChatRoom}) => {
     return ( 
         <>
             <h2 className="main-header" >Welcome to your BNTA Chat Rooms</h2>
-            <ul className="client-name">{clientUser.name ? clientUser.name : "Not logged in"}</ul>
+            
             <ul>{chatRoomData}</ul>
         </>
     );

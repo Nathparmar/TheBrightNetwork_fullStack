@@ -20,6 +20,7 @@ const Home = ({allUsers}) => {
         <Outlet />
         </header>
         <>
+            <ul className="client-name">{clientUser.name ? clientUser.name : "Not logged in"}</ul>
             {clientUser.id? <UserList allUsers={allUsers}/>:null}
         </>
 
