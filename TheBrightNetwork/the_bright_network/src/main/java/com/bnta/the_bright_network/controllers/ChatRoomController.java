@@ -51,8 +51,8 @@ public class ChatRoomController {
     public ResponseEntity <List<MessageReplyDTO>> getAllMessagesInOrder(
             @PathVariable long id,
             @RequestParam Optional<String> keyword,
-            @RequestBody MessageDTO messageDTO){
-        List<MessageReplyDTO> orderedMessages = chatRoomService.getOrderedMessages(id, messageDTO);
+            @RequestParam long userId){
+        List<MessageReplyDTO> orderedMessages = chatRoomService.getOrderedMessages(id, userId);
         if (keyword.isPresent()){
             List<MessageReplyDTO> filteredMessages= chatRoomService.filterMessages(orderedMessages, keyword.get());
         return new ResponseEntity<>(filteredMessages, filteredMessages==null?HttpStatus.NOT_FOUND:HttpStatus.OK);

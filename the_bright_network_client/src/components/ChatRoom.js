@@ -1,8 +1,8 @@
-const ChatRoom = ({chatRoomName, clickChatRoom}) => {
+const ChatRoom = ({chatRoomName, clickChatRoom, chatRoomId}) => {
     return (
         <section className="chat-room">
        
-        <button className="chat-room-btn" onClick={() => clickChatRoom(chatRoomName)}>{chatRoomName}</button>
+        <button className="chat-room-btn" onClick={() => clickChatRoom(chatRoomId)}>{chatRoomName}</button>
         </section>
     );
 }

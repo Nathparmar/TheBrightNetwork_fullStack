@@ -7,7 +7,7 @@ const ChatRoomList = ({chatRooms, clickChatRoom}) => {
     const clientUser = useContext(ClientUserContext);
 
     const chatRoomData = chatRooms.map((chatRoom) => (
-       <ChatRoom key={chatRoom.id} chatRoomName={chatRoom.name} clickChatRoom={clickChatRoom}/>
+       <ChatRoom key={chatRoom.id} chatRoomName={chatRoom.name} chatRoomId = {chatRoom.id} clickChatRoom={clickChatRoom}/>
     ))
 
     return ( 

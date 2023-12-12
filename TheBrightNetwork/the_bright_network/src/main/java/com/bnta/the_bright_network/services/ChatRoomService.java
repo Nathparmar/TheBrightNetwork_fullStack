@@ -39,9 +39,9 @@ public class ChatRoomService {
         return chatRoomRepository.findAll();
     }
 
-    public List<MessageReplyDTO> getOrderedMessages(long id, MessageDTO messageDTO) {
+    public List<MessageReplyDTO> getOrderedMessages(long id, long userId) {
 
-        List<Subscription> chatRoomSubscriptions = subscriptionRepository.findByChatRoomIdAndUserId(id, messageDTO.getuserId());
+        List<Subscription> chatRoomSubscriptions = subscriptionRepository.findByChatRoomIdAndUserId(id, userId);
         if (chatRoomSubscriptions.isEmpty()){
             return null;
         }

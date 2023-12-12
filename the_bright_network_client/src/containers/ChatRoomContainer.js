@@ -67,22 +67,38 @@ const ChatRoomContainer = () => {
         setAllUsers([...users])
     }
 
-    const clickChatRoom = (chatRoom) => {
-        setCurrentChatRoom(chatRoom);
+    const clickChatRoom = (chatRoomId) => {
+        setCurrentChatRoom(chatRoomId);
         
     }
+
+
+    const getMessagesByChatRoom = async (currentChatRoom) => {
+        const response = await fetch(`http://localhost:8080/chatrooms/${currentChatRoom}/messages?userId=${clientUser.id}`,{
+            method: "GET",
+            headers: {"Content-Type":"application/json"}
+        })
+        console.log(clientUser.id);
+        const messageData = await response.json();
+        setChatRoomMessages(messageData)
+    }
+
+
 
 
     useEffect(() => {
         clientUserId();
         getAllUserChatRooms();
         getAllUsers();
-        console.log(allUsers);
+        
 
     },[clientUser])
 
     useEffect(() => {
-        console.log(currentChatRoom);
+        if(currentChatRoom){
+            getMessagesByChatRoom(currentChatRoom);
+        }
+        
     },[currentChatRoom])
 
     const chatRoomRoutes = createBrowserRouter([
