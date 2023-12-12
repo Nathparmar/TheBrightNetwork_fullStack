@@ -13,7 +13,7 @@ const ChatRoomContainer = () => {
     const [clientUser,setClientUser] = useState([
         
         {   
-            name: "not logged in",
+            name: null,
             id: null,
             role: null
 
@@ -60,10 +60,10 @@ const ChatRoomContainer = () => {
         const response = await fetch();
     }
 
-    // useEffect(() => {
-    //     clientUserId();
-    //     getAllUserChatRooms();
-    // },[])
+    useEffect(() => {
+        clientUserId();
+        getAllUserChatRooms();
+    },[clientUser])
 
     // useEffect(() => {
     //     getAllChatRooms()
