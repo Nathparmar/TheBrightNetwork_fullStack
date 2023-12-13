@@ -29,17 +29,24 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
     return (
         <>
 
-           <h2>{nameOfChat}</h2> 
-           <label htmlFor="addUser">Add User</label>
-            <select 
-                id="addUser" 
+            <h2>{nameOfChat}</h2>
+            
+            {!nameOfChat.includes("(Private)") && (
+            <>
+                <label htmlFor="addUser">Add User</label>
+                <select
+                id="addUser"
                 name="addUserButton"
                 defaultValue="Add users"
                 onChange={handleChange}
-            >
-                <option disabled-value="Add Users">Choose an User</option>
+                >
+                <option disabled value="Add Users">
+                    Choose an User
+                </option>
                 {userOptions}
-            </select>
+                </select>
+            </>
+            )}
 
             
             {messageData.reverse()}
