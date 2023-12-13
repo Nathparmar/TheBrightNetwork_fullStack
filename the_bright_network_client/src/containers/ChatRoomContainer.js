@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider, useNavigate } from "react-router-d
 import { Outlet } from "react-router-dom";
 import Home from "../components/Home";
 import MessageList from "../components/MessageList";
+import ChatRoomForm from "../components/ChatRoomForm";
 
 
 export const ClientUserContext = createContext();
@@ -36,26 +37,13 @@ const ChatRoomContainer = () => {
             
             return !(jsonData.some((chatUser) => user.id === chatUser.userId));
         });
-
-        const usersInChat = allUsers.filter((user) => {
-            
-            return (jsonData.some((chatUser) => user.id === chatUser.userId));
-        });
-        
         
         setUsersNotInChatRoom([...unAddedUsers]);
-        setAddedUsers([...usersInChat]);
+        setAddedUsers([...jsonData]);
 
-        
     }
     
-
-    
-
-
-    
     const clientUserId = () => {
-        // const clientData = clientUser.id;
         return (<ClientUserContext.Provider value = {clientUser}>
                 </ClientUserContext.Provider>)
               
@@ -134,6 +122,17 @@ const ChatRoomContainer = () => {
         getUsersNotInChatRoom()
     }
 
+    const postNewChatroom = async (newChatroom) => {
+
+        const response = await fetch('http://localhost:8080/chatrooms',{
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(newChatroom)
+        })
+
+        getAllUserChatRooms();
+    }
+
 
 
     useEffect(() => {
@@ -190,6 +189,17 @@ const ChatRoomContainer = () => {
                             usersNotInChatRoom={usersNotInChatRoom} 
                             postUser={postUser} 
                             addedUsers={addedUsers}
+                        />
+                        </ClientUserContext.Provider>
+                    </>
+                },
+                {
+                    path: "/create/chatrooms",
+                    element: <>
+                        <ClientUserContext.Provider value={clientUser}>
+                        <ChatRoomForm
+                            allUsers={allUsers}
+                            postNewChatroom = {postNewChatroom}
                         />
                         </ClientUserContext.Provider>
                     </>

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { ClientUserContext } from "../containers/ChatRoomContainer";
 import ChatRoom from "./ChatRoom";
+import { Link, Outlet } from "react-router-dom";
 
 const ChatRoomList = ({chatRooms, clickChatRoom}) => {
 
@@ -12,8 +13,9 @@ const ChatRoomList = ({chatRooms, clickChatRoom}) => {
 
     return ( 
         <>
+            <Outlet/>
             <h2 className="main-header" >Welcome to your BNTA Chat Rooms</h2>
-            
+            <Link to="/create/chatrooms"><button>Create new chatRoom</button></Link>
             <ul>{chatRoomData}</ul>
         </>
     );

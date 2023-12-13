@@ -14,13 +14,6 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
     const handleChange = (event) => {
 
         postUser(event.target.value);
-
-            
-    
-        // let propertyName = event.target.name;
-        // let copiedChocolate = {...stateChocolate};
-        // copiedChocolate[propertyName] = event.target.value;
-        // setStateChocolate(copiedChocolate);
     }
 
     const getNames = addedUsers.map((user) => {
