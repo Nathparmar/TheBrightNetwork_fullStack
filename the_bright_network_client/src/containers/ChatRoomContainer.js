@@ -133,8 +133,22 @@ const ChatRoomContainer = () => {
         getAllUserChatRooms();
     }
 
-    const startPrivateChat = async (messagedUserId) => {
-        console.log(messagedUserId);
+    const startPrivateChat = async (messagedUserId,messagedUserName) => {
+        const privateChats = chatRooms.filter((chatRoom) => {
+            return (chatRoom.name.includes("Private") && 
+            chatRoom.subscriptions.some((subscription) => subscription.user.id === messagedUserId)
+            );
+        });
+        if (privateChats.length === 0){
+            postNewChatroom({
+                    creatorId : clientUser.id,
+                    chatroomName: `(Private) - ${messagedUserName} ${clientUser.name}`,
+                    userIds: [messagedUserId,clientUser.id]
+            })
+            getAllUserChatRooms();
+        } else {
+            setCurrentChatRoom(privateChats[0].id);
+        }
     }
 
 

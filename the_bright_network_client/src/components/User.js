@@ -1,7 +1,7 @@
 const User = ({userName,userRole,userId,startPrivateChat}) => {
     
     const onButtonClick = () =>{
-        startPrivateChat(userId);
+        startPrivateChat(userId,userName);
     }
     
     return (
