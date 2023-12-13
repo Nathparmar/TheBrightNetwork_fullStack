@@ -133,6 +133,10 @@ const ChatRoomContainer = () => {
         getAllUserChatRooms();
     }
 
+    const startPrivateChat = async (messagedUserId) => {
+        console.log(messagedUserId);
+    }
+
 
 
     useEffect(() => {
@@ -157,7 +161,7 @@ const ChatRoomContainer = () => {
             element: <>
                     
                     <ClientUserContext.Provider value={clientUser}>
-                    <Home allUsers={allUsers}/>,
+                    <Home allUsers={allUsers} startPrivateChat={startPrivateChat}/>,
                     </ClientUserContext.Provider>
                 </>,
             children: [

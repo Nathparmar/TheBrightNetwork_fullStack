@@ -4,7 +4,7 @@ import { ClientUserContext } from "../containers/ChatRoomContainer";
 import { useContext } from "react";
 
 
-const Home = ({allUsers}) => {
+const Home = ({allUsers, startPrivateChat}) => {
     const clientUser = useContext(ClientUserContext);
 
     return ( 
@@ -21,7 +21,7 @@ const Home = ({allUsers}) => {
         </header>
         <>
             <ul className="client-name">{clientUser.name ? clientUser.name : "Not logged in"}</ul>
-            {clientUser.id? <UserList allUsers={allUsers}/>:null}
+            {clientUser.id? <UserList allUsers={allUsers} startPrivateChat={startPrivateChat}/>:null}
         </>
 
         </>
