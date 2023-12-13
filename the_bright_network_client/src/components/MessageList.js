@@ -1,6 +1,10 @@
 import Message from "./Message";
 import MessageForm from "./MessageForm";
+import { Multiselect } from "multiselect-react-dropdown/dist/multiselect-react-dropdown.cjs.development";
+import { useState } from "react"
 const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser, addedUsers,currentChatRoomName,chatRoomId}) => {
+
+    const [usersToBeAdded, setUsersToBeAdded] = useState([])
 
     const messageData = chatRoomMessages.map((message) => (
        <Message 
@@ -12,39 +16,86 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
     ))
 
     const handleChange = (event) => {
-
-        postUser(event.target.value);
+        event.preventDefault()
+        console.log(event.target);
+        const addingUsers = event.map((user) => {
+            postUser(user);
+        })
+        
     }
+
+
+
+    const handleFormSubmit = (event) => {
+
+        event.preventDefault();
+    
+
+    }
+
+
+    
+
+
+    const updateAddedUser = (event) => {
+       
+        const userIds = event.map((user) => {
+            return user.id
+        })
+
+        setUsersToBeAdded(userIds)
+    }
+
+    
+
 
     const getNames = addedUsers.map((user) => {
         return <li key={user.userId}>{user.name}</li>;
     })
     
+    // const userOptions = usersNotInChatRoom.map((user) => {
+    //     return <option key = {user.userId} value={user.id}> {user.name} </option>
+    // })
+
     const userOptions = usersNotInChatRoom.map((user) => {
-        return <option key = {user.userId} value={user.id}> {user.name} </option>
+        
+        return {
+            name: user.name,
+            id: user.id
+        };
+
+       
     })
+
 
     return (
         <>
 
             <h2>{currentChatRoomName}</h2>
             
-           {(currentChatRoomName && !currentChatRoomName.includes("Private")) && 
-            <form>
-                <label htmlFor="addUser">Add User</label>
-                <select
-                id="addUser"
-                name="addUserButton"
-                defaultValue="Add users"
-                onChange={handleChange}
-                >
-                <option disabled value="Add Users">
-                    Choose an User
-                </option>
-                {userOptions}
-                </select>
+           {/* { {(currentChatRoomName && !currentChatRoomName.includes("Private")) && } */}
+            
+
+            <form onSubmit={(event) => handleChange(event)}>
+                
+
+            <Multiselect 
+                isObject = {true}
+
+                options = {userOptions}
+                selectedValues={{}} 
+                onSelect={updateAddedUser}
+                onRemove={updateAddedUser}
+                displayValue="name" 
+                placeholder="Add users here..."
+
+            />
+
+
+            <input type="submit" value={"Add user"}/> 
             </form>
-            }
+
+            
 
             
             {messageData.reverse()}
