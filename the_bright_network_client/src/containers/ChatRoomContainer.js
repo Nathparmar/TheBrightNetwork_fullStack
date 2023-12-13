@@ -61,11 +61,10 @@ const ChatRoomContainer = () => {
         
     }
 
-    
-
     const getAllUserChatRooms = async () => {
         const response = await fetch(`http://localhost:8080/chatrooms`);
         const jsonData = await response.json();
+        
         const userChatRooms = jsonData.filter((chatRoom) => {
             const subscriptions = chatRoom.subscriptions || [];
             return subscriptions.some((subscription) => subscription.user.id === clientUser.id);
@@ -130,9 +129,8 @@ const ChatRoomContainer = () => {
             body: JSON.stringify(newChatroom)
         })
         const newChat = await response.json();
-        //console.log(newChat);
-        setCurrentChatRoom(newChat.id)
-        getAllUserChatRooms();
+        console.log(newChat.chatroomId);
+        setCurrentChatRoom(newChat.chatroomId)
     }
 
     const startPrivateChat = async (messagedUserId,messagedUserName) => {
@@ -147,9 +145,7 @@ const ChatRoomContainer = () => {
                     chatroomName: `(Private) - ${clientUser.name} and ${messagedUserName} `,
                     userIds: [messagedUserId,clientUser.id]
             })
-            getAllUserChatRooms();
-            
-            
+            getAllUserChatRooms()
         } else {
             setCurrentChatRoom(privateChats[0].id);
         }

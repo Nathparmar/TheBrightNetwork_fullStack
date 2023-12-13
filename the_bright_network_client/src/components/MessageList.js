@@ -24,8 +24,6 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
         return <option key = {user.id} value={user.id}> {user.name} </option>
     })
 
-    console.log(addedUsers);
-
     return (
         <>
 
