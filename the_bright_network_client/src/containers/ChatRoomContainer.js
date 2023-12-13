@@ -142,7 +142,7 @@ const ChatRoomContainer = () => {
         if (privateChats.length === 0){
             postNewChatroom({
                     creatorId : clientUser.id,
-                    chatroomName: `(Private) - ${messagedUserName} ${clientUser.name}`,
+                    chatroomName: `(Private) - ${clientUser.name} and ${messagedUserName} `,
                     userIds: [messagedUserId,clientUser.id]
             })
             getAllUserChatRooms();
