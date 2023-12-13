@@ -25,6 +25,9 @@ const ChatRoomContainer = () => {
     const [chatRooms,setChatRooms] = useState([]);
     const [allUsers,setAllUsers] = useState([]); 
     const [currentChatRoom, setCurrentChatRoom] = useState(null);
+    
+    const [currentChatRoomName, setCurrentChatRoomName] = useState(null);
+
     const [chatRoomMessages, setChatRoomMessages] = useState([]);
     const [usersNotInChatRoom,setUsersNotInChatRoom] = useState([]);
     const [addedUsers, setAddedUsers] = useState([]);
@@ -84,6 +87,7 @@ const ChatRoomContainer = () => {
 
     const clickChatRoom = (chatRoomId) => {
         setCurrentChatRoom(chatRoomId);
+        
     }
 
 
@@ -130,6 +134,7 @@ const ChatRoomContainer = () => {
         const newChat = await response.json();
         
         setCurrentChatRoom(newChat.chatroomId)
+        setCurrentChatRoomName(newChat.chatroomName)
     }
 
     const startPrivateChat = async (messagedUserId,messagedUserName) => {
@@ -144,16 +149,24 @@ const ChatRoomContainer = () => {
                     chatroomName: `(Private) - ${clientUser.name} and ${messagedUserName} `,
                     userIds: [messagedUserId,clientUser.id]
             })
-            //getAllUserChatRooms()
+            
+            getAllUserChatRooms()
         } else {
             setCurrentChatRoom(privateChats[0].id);
+            
         }
     }
 
     const getChatRoomNameById = (chatRoomId) => {
+        getAllUserChatRooms()
+        
         let foundChatRoom = chatRooms.find((chatRoom) => chatRoom.id === chatRoomId);
-        console.log(foundChatRoom.name);
-        return foundChatRoom.name;
+        
+        if (foundChatRoom){
+            console.log(foundChatRoom.name);
+            setCurrentChatRoomName(foundChatRoom.name)
+            
+        }
     };
 
 
@@ -170,6 +183,7 @@ const ChatRoomContainer = () => {
         if(currentChatRoom){
             getMessagesByChatRoom(currentChatRoom);
             getUsersNotInChatRoom();
+            getChatRoomNameById(currentChatRoom)
         }
         
     },[currentChatRoom])
@@ -213,7 +227,7 @@ const ChatRoomContainer = () => {
                             postUser={postUser} 
                             addedUsers={addedUsers}
                             chatRoomId={currentChatRoom}
-                            getChatRoomNameById={getChatRoomNameById}
+                            currentChatRoomName={currentChatRoomName}
                         />
                         </ClientUserContext.Provider>
                     </>

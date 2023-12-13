@@ -1,6 +1,6 @@
 import Message from "./Message";
 import MessageForm from "./MessageForm";
-const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser, addedUsers, getChatRoomNameById,chatRoomId}) => {
+const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser, addedUsers,currentChatRoomName,chatRoomId}) => {
 
     const messageData = chatRoomMessages.map((message) => (
        <Message 
@@ -16,23 +16,21 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
         postUser(event.target.value);
     }
 
-    const nameOfChat = getChatRoomNameById(chatRoomId)
-
     const getNames = addedUsers.map((user) => {
-        return <ul>{user.name}</ul>;
+        return <li key={user.userId}>{user.name}</li>;
     })
     
     const userOptions = usersNotInChatRoom.map((user) => {
-        return <option key = {user.id} value={user.id}> {user.name} </option>
+        return <option key = {user.userId} value={user.id}> {user.name} </option>
     })
 
     return (
         <>
 
-            <h2>{nameOfChat}</h2>
+            <h2>{currentChatRoomName}</h2>
             
-            {!nameOfChat.includes("(Private)") && (
-            <>
+           {(currentChatRoomName && !currentChatRoomName.includes("Private")) && 
+            <form>
                 <label htmlFor="addUser">Add User</label>
                 <select
                 id="addUser"
@@ -45,17 +43,17 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
                 </option>
                 {userOptions}
                 </select>
-            </>
-            )}
+            </form>
+            }
 
             
             {messageData.reverse()}
            <MessageForm postMessage={postMessage}/>
 
-           <div>
+           <ul>
                 {getNames}
 
-           </div>
+           </ul>
         </>
     );
 }

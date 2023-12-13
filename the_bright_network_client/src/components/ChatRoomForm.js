@@ -104,6 +104,7 @@ const ChatRoomForm = ({allUsers,postNewChatroom}) => {
                 onSelect={updateAddedUser} // Function will trigger on select event
                 onRemove={updateAddedUser} // Function will trigger on remove event
                 displayValue="name" // Property name to display in the dropdown options
+                placeholder="Add users here..."
             
             />
            

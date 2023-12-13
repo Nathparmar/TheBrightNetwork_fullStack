@@ -7,8 +7,10 @@ const ChatRoomList = ({chatRooms, clickChatRoom}) => {
 
     const clientUser = useContext(ClientUserContext);
 
+    
     const chatRoomData = chatRooms.map((chatRoom) => (
-       <ChatRoom key={chatRoom.id} chatRoomName={chatRoom.name} chatRoomId = {chatRoom.id} clickChatRoom={clickChatRoom}/>
+        <ChatRoom key={chatRoom.id} chatRoomName={chatRoom.name} chatRoomId = {chatRoom.id} clickChatRoom={clickChatRoom}/>
+
     ))
 
     return ( 
@@ -24,6 +26,6 @@ const ChatRoomList = ({chatRooms, clickChatRoom}) => {
 export default ChatRoomList;
 
 
-//         if (!chatRoom.name.includes("Private")){
+//         if (!chatRoom.name.includes("(Private)")){
     //         <ChatRoom key={chatRoom.id} chatRoomName={chatRoom.name} chatRoomId = {chatRoom.id} clickChatRoom={clickChatRoom}/>
     //     }
