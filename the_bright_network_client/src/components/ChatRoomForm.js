@@ -55,8 +55,8 @@ const ChatRoomForm = ({allUsers,postNewChatroom}) => {
 
         event.preventDefault();
         
-        if(stateChatRoom.chatroomName==="" || AddedUsers.length<2){
-            alert("Need to provide all details")
+        if(stateChatRoom.chatroomName==="" || AddedUsers.length<3){
+            alert("Need to provide name and add at least 3 users")
             return;
         }
         
@@ -100,10 +100,10 @@ const ChatRoomForm = ({allUsers,postNewChatroom}) => {
                 isObject = {true}
 
                 options = {userOptions}
-                selectedValues={{}} // Preselected value to persist in dropdown
-                onSelect={updateAddedUser} // Function will trigger on select event
-                onRemove={updateAddedUser} // Function will trigger on remove event
-                displayValue="name" // Property name to display in the dropdown options
+                selectedValues={{}} 
+                onSelect={updateAddedUser} 
+                onRemove={updateAddedUser} 
+                displayValue="name" 
                 placeholder="Add users here..."
             
             />

@@ -7,8 +7,11 @@ const ChatRoomList = ({chatRooms, clickChatRoom}) => {
 
     const clientUser = useContext(ClientUserContext);
 
+    const filteredRooms = chatRooms.filter((chatroom) => {
+        return chatroom.subscriptions.length > 2
+    })
     
-    const chatRoomData = chatRooms.map((chatRoom) => (
+    const chatRoomData = filteredRooms.map((chatRoom) => (
         <ChatRoom key={chatRoom.id} chatRoomName={chatRoom.name} chatRoomId = {chatRoom.id} clickChatRoom={clickChatRoom}/>
 
     ))
