@@ -17,46 +17,27 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
 
     const handleChange = (event) => {
         event.preventDefault()
-        console.log(event.target);
-        const addingUsers = event.map((user) => {
-            postUser(user);
+        
+        const addingUsers = usersToBeAdded.map((user) => {
+            postUser(user.id);
+            console.log(user);
         })
         
     }
 
 
-
-    const handleFormSubmit = (event) => {
-
-        event.preventDefault();
-    
-
-    }
-
-
-    
-
-
     const updateAddedUser = (event) => {
+        
+        setUsersToBeAdded([...event])
        
-        const userIds = event.map((user) => {
-            return user.id
-        })
-
-        setUsersToBeAdded(userIds)
     }
-
-    
 
 
     const getNames = addedUsers.map((user) => {
         return <li key={user.userId}>{user.name}</li>;
     })
     
-    // const userOptions = usersNotInChatRoom.map((user) => {
-    //     return <option key = {user.userId} value={user.id}> {user.name} </option>
-    // })
-
+   
     const userOptions = usersNotInChatRoom.map((user) => {
         
         return {
@@ -69,31 +50,31 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
 
 
     return (
-        <>
+        <section>
 
             <h2>{currentChatRoomName}</h2>
             
-           {/* { {(currentChatRoomName && !currentChatRoomName.includes("Private")) && } */}
+           { (currentChatRoomName && !currentChatRoomName.includes("Private")) && 
             
 
             <form onSubmit={(event) => handleChange(event)}>
                 
 
-            <Multiselect 
-                isObject = {true}
+                <Multiselect 
+                    isObject = {true}
 
-                options = {userOptions}
-                selectedValues={{}} 
-                onSelect={updateAddedUser}
-                onRemove={updateAddedUser}
-                displayValue="name" 
-                placeholder="Add users here..."
+                    options = {userOptions}
+                    selectedValues={{}} 
+                    onSelect={updateAddedUser}
+                    onRemove={updateAddedUser}
+                    displayValue="name" 
+                    placeholder="Add users here..."
 
-            />
+                />
 
 
-            <input type="submit" value={"Add user"}/> 
-            </form>
+                <input type="submit" value={"Add user"}/> 
+            </form>}
 
             
 
@@ -105,7 +86,7 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
                 {getNames}
 
            </ul>
-        </>
+        </section>
     );
 }
  

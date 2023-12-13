@@ -40,11 +40,7 @@ const ChatRoomForm = ({allUsers,postNewChatroom}) => {
 
         setAddedUsers(userIds)
 
-        // const copiedUnAddedUsers = UnAddedUsers.filter((user) => {
-        //     return (event[0].id != user.id)
-        // })
-
-        // setUnAddedUsers([...copiedUnAddedUsers])
+     
 
         
 
