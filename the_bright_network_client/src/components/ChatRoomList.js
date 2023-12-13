@@ -15,7 +15,7 @@ const ChatRoomList = ({chatRooms, clickChatRoom}) => {
         <>
             <Outlet/>
             <h2 className="main-header" >Welcome to your BNTA Chat Rooms</h2>
-            <Link to="/create/chatrooms"><button>Create new chatRoom</button></Link>
+            {clientUser.role === "Trainer"? <Link to="/create/chatrooms"><button>Create new chatRoom</button></Link> :null} 
             <ul>{chatRoomData}</ul>
         </>
     );
