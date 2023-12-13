@@ -129,7 +129,9 @@ const ChatRoomContainer = () => {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(newChatroom)
         })
-
+        const newChat = await response.json();
+        //console.log(newChat);
+        setCurrentChatRoom(newChat.id)
         getAllUserChatRooms();
     }
 
@@ -146,6 +148,8 @@ const ChatRoomContainer = () => {
                     userIds: [messagedUserId,clientUser.id]
             })
             getAllUserChatRooms();
+            
+            
         } else {
             setCurrentChatRoom(privateChats[0].id);
         }
