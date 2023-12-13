@@ -1,6 +1,6 @@
 import Message from "./Message";
 import MessageForm from "./MessageForm";
-const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser, addedUsers}) => {
+const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser, addedUsers, getChatRoomNameById,chatRoomId}) => {
 
     const messageData = chatRoomMessages.map((message) => (
        <Message 
@@ -16,6 +16,8 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
         postUser(event.target.value);
     }
 
+    const nameOfChat = getChatRoomNameById(chatRoomId)
+
     const getNames = addedUsers.map((user) => {
         return <ul>{user.name}</ul>;
     })
@@ -27,7 +29,7 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
     return (
         <>
 
-
+           <h2>{nameOfChat}</h2> 
            <label htmlFor="addUser">Add User</label>
             <select 
                 id="addUser" 

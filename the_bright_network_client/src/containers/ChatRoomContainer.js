@@ -151,6 +151,12 @@ const ChatRoomContainer = () => {
         }
     }
 
+    const getChatRoomNameById = (chatRoomId) => {
+        let foundChatRoom = chatRooms.find((chatRoom) => chatRoom.id === chatRoomId);
+        console.log(foundChatRoom.name);
+        return foundChatRoom.name;
+    };
+
 
 
     useEffect(() => {
@@ -207,9 +213,12 @@ const ChatRoomContainer = () => {
                             usersNotInChatRoom={usersNotInChatRoom} 
                             postUser={postUser} 
                             addedUsers={addedUsers}
+                            chatRoomId={currentChatRoom}
+                            getChatRoomNameById={getChatRoomNameById}
                         />
                         </ClientUserContext.Provider>
                     </>
+
                 },
                 {
                     path: "/create/chatrooms",
