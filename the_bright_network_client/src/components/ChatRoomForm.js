@@ -1,16 +1,25 @@
 import { useContext, useState} from "react";
 import { ClientUserContext } from "../containers/ChatRoomContainer";
+import { Multiselect } from "multiselect-react-dropdown/dist/multiselect-react-dropdown.cjs.development";
+import {  useNavigate } from "react-router-dom";
+
 
 const ChatRoomForm = ({allUsers,postNewChatroom}) => {
     const clientUser = useContext(ClientUserContext);
+    const navigate = useNavigate();
 
-    const [UnAddedUsers, setUnAddedUsers] = useState([clientUser,...allUsers]);
     const [AddedUsers,setAddedUsers] = useState([])
 
     const userOptions = [clientUser,...allUsers].map((user) => {
-        return <option key = {user.id} value={user.id}> {user.name} </option>
+        return {
+            name: user.name,
+            id: user.id
+        };
+
+       
     })
 
+  
     const [stateChatRoom,setStateChatRoom] = useState({
         chatroomName: "",
         userIds: []
@@ -23,14 +32,21 @@ const ChatRoomForm = ({allUsers,postNewChatroom}) => {
     }
 
     const updateAddedUser = (event) => {
+       
 
-        setAddedUsers([event.target.value, ...AddedUsers])
-
-        const copiedUnAddedUsers = UnAddedUsers.filter((user) => {
-            return (event.target.value != user.id)
+        const userIds = event.map((user) => {
+            return user.id
         })
 
-        setUnAddedUsers([...copiedUnAddedUsers])
+        setAddedUsers(userIds)
+
+        // const copiedUnAddedUsers = UnAddedUsers.filter((user) => {
+        //     return (event[0].id != user.id)
+        // })
+
+        // setUnAddedUsers([...copiedUnAddedUsers])
+
+        
 
     }
 
@@ -57,13 +73,19 @@ const ChatRoomForm = ({allUsers,postNewChatroom}) => {
             userIds: []
         })
 
+        navigate("/main-page");
+
     }
+
+    
+    
 
     return ( 
 
     <section>
         
         <h2>Log in to chatroom:</h2>
+        
         <form onSubmit={(event) => handleFormSubmit(event)}>
             <label htmlFor="name-input">Name:</label>
             <input
@@ -74,19 +96,21 @@ const ChatRoomForm = ({allUsers,postNewChatroom}) => {
                 placeholder="Chat name"
             />
 
-            <label htmlFor="addUser">Add User</label>
-            <select 
-                id="addUser" 
-                name="addUserButton"
-                defaultValue="Add users"
-                onChange={updateAddedUser}
-            >
-                <option disabled-value="Add Users">Choose an User</option>
-                {userOptions}
-            </select>
+            <Multiselect 
+                isObject = {true}
 
-            <input type="submit" value={"Log in"}/>
+                options = {userOptions}
+                selectedValues={{}} // Preselected value to persist in dropdown
+                onSelect={updateAddedUser} // Function will trigger on select event
+                onRemove={updateAddedUser} // Function will trigger on remove event
+                displayValue="name" // Property name to display in the dropdown options
+            
+            />
+           
+
+            <input type="submit" value={"create room"}/> 
         </form>
+      
         </section>
         );
 }
