@@ -6,7 +6,7 @@ const SignUpForm = ({postNewUserSignUp, allUsers}) => {
     const [newUser,setNewUser] = useState({
         name : "",
         age : 0,
-        role : "student"
+        role : "Student"
     });
 
 
