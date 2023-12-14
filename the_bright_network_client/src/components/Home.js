@@ -17,10 +17,11 @@ const Home = ({allUsers, startPrivateChat}) => {
         <>
             <Link to="/main-page">Home</Link>
         </>
+
         <>
             <Link to="/signup">Sign Up</Link>
         </>
-        
+
         <Outlet />
         </header>
         <section className="sidebar">
