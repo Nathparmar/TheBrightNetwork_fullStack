@@ -9,12 +9,12 @@ const Home = ({allUsers, startPrivateChat}) => {
 
     return ( 
         <>
-            <header>
-                <Link to="/login">Login</Link>
+            <header className="header-nav-bar">
+                <Link to="/login"><button className="header-button">Login</button></Link>
         
-                <Link to="/main-page">Home</Link>
+                <Link to="/main-page"><button className="header-button">Home</button></Link>
                     
-                <Link to="/signup">Sign Up</Link>
+                <Link to="/signup"><button className="header-button">Sign Up</button></Link>
             </header>
 
             <main className="home-main"> 

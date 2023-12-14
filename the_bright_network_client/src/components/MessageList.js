@@ -51,15 +51,15 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
 
     return (
         <section>
-
-            <h2>{currentChatRoomName}</h2>
-            
+            <div className="chatroom-title">
+                <h2>{currentChatRoomName}</h2>
+            </div>
            { (currentChatRoomName && !currentChatRoomName.includes("Private")) && 
             
 
             <form onSubmit={(event) => handleChange(event)}>
                 
-
+            <div className="adding-user-multiselect">
                 <Multiselect 
                     isObject = {true}
 
@@ -69,9 +69,8 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
                     onRemove={updateAddedUser}
                     displayValue="name" 
                     placeholder="Add users here..."
-
                 />
-
+            </div>
 
                 <input type="submit" value={"Add user"}/> 
             </form>}
@@ -84,7 +83,6 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
 
            <ul>
                 {getNames}
-
            </ul>
         </section>
     );
