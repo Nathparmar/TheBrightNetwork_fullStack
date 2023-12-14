@@ -201,10 +201,23 @@ header{
   display: block;
   align-items: center;
   background-color: rgb(24, 203, 183);
-  padding: 1em 1em 1em 1em;
+  padding: 0.5em 0.5em 0.5em 0.5em;
   margin-bottom: 1em;
+  text-align: center;
+  font-size: x-large;
 }
 
 .adding-user-multiselect{
   width: 20%;
+  margin-bottom: 1em;
+}
+
+.message-scroll{
+  background-color: whitesmoke;
+  overflow-y: scroll;
+  height: 30em;
+}
+
+.add-user-form{
+  margin-bottom: 1em;
 }

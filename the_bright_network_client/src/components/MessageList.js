@@ -1,4 +1,5 @@
 import Message from "./Message";
+import MessageBox from "./MessageBox";
 import MessageForm from "./MessageForm";
 import { Multiselect } from "multiselect-react-dropdown/dist/multiselect-react-dropdown.cjs.development";
 import { useState } from "react"
@@ -57,7 +58,7 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
            { (currentChatRoomName && !currentChatRoomName.includes("Private")) && 
             
 
-            <form onSubmit={(event) => handleChange(event)}>
+            <form className="add-user-form" onSubmit={(event) => handleChange(event)}>
                 
             <div className="adding-user-multiselect">
                 <Multiselect 
@@ -68,7 +69,7 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
                     onSelect={updateAddedUser}
                     onRemove={updateAddedUser}
                     displayValue="name" 
-                    placeholder="Add users here..."
+                    placeholder="Click here..."
                 />
             </div>
 
@@ -76,14 +77,13 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
             </form>}
 
             
-
             
-            {messageData.reverse()}
-           <MessageForm postMessage={postMessage}/>
+            <MessageBox listOfMessages={messageData.reverse()}/>
+            <MessageForm postMessage={postMessage}/>
 
-           <ul>
+            <ul>
                 {getNames}
-           </ul>
+            </ul>
         </section>
     );
 }
