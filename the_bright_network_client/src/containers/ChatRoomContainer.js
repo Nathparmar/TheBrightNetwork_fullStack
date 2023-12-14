@@ -69,9 +69,10 @@ const ChatRoomContainer = () => {
         const jsonData = await response.json();
         const userChatRooms = jsonData.filter((chatRoom) => {
             const subscriptions = chatRoom.subscriptions || [];
-            return subscriptions.some((subscription) => (subscription.user.id === clientUser.id || clientUser.role == "trainer"));
+            return subscriptions.some((subscription) => (subscription.user.id === clientUser.id || (clientUser.role == "Trainer" && !chatRoom.name.includes("Private"))));
         });
-
+        console.log(userChatRooms);
+        console.log(clientUser);
         setChatRooms([...userChatRooms]);
     }
 
@@ -92,13 +93,30 @@ const ChatRoomContainer = () => {
 
 
     const getMessagesByChatRoom = async (currentChatRoom) => {
-        const response = await fetch(`http://localhost:8080/chatrooms/${currentChatRoom}/messages?userId=${clientUser.id}`,{
-            method: "GET",
-            headers: {"Content-Type":"application/json"}
-        })
-        const messageData = await response.json();
-        setChatRoomMessages([...messageData]);
+        try {
+
+            const response = await fetch(`http://localhost:8080/chatrooms/${currentChatRoom}/messages?userId=${clientUser.id}`,{
+                method: "GET",
+                headers: {"Content-Type":"application/json"}
+            })
+            const messageData = await response.json();
+            setChatRoomMessages([...messageData]);
+
+        } catch (e) {
+            const response = await fetch(`http://localhost:8080/chatrooms/${currentChatRoom}`);
+            const jsonData = await response.json();
+            //onsole.log(jsonData.s);
+            const idOfUserInChat = jsonData.subscriptions[0].user.id //get ID of exisiting user to allow admin to load messages
+
+            const adminResponse = await fetch(`http://localhost:8080/chatrooms/${currentChatRoom}/messages?userId=${idOfUserInChat}`,{
+                method: "GET",
+                headers: {"Content-Type":"application/json"}
+            })
+            const messageData = await adminResponse.json();
+            setChatRoomMessages([...messageData]);
+        };
     }
+    
 
     const postMessage = async (newMessage) => {
         const response = await fetch(`http://localhost:8080/chatrooms/${currentChatRoom}/messages`,{
