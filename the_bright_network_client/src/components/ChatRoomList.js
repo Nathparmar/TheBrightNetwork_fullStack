@@ -20,7 +20,7 @@ const ChatRoomList = ({chatRooms, clickChatRoom}) => {
         <>
             
             <h2 className="chat-room-header" >Welcome to your BNTA Chat Rooms</h2>
-            {clientUser.role === "Trainer"? <Link to="/create/chatrooms"><button>Create new chatRoom</button></Link> :null} 
+            {clientUser.role === "Trainer"? <Link to="/create/chatrooms"><button className="create-chat-button" >Create new chatroom</button></Link> :null} 
 
             <section className="chat-room-body">
             {chatRoomData}
