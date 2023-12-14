@@ -45,43 +45,44 @@ const SignUpForm = ({postNewUserSignUp, allUsers}) => {
 
     return ( 
 
-    <section>
+    <section className="login-form">
         <Outlet />
-        <h2>Create an Account!:</h2>
-        <form onSubmit={(event) => handleFormSubmit(event)}>
-            <label htmlFor="name-input">Name:</label>
-            <input
-                type="text"
-                id= "name"
-                onInput={(event) => handleChange(event)}
-                value={newUser.name}
-                placeholder="Username"
-            />
-            <label htmlFor="age-input">Age:</label>
-            <input
-                type="number"
-                id= "age"
-                onInput={(event) => handleChange(event)}
-                value={newUser.age}
-                placeholder="Age"
-            />
-            {/* <label htmlFor="role-input">Name:</label>
-            <input
-                type="text"
-                id= "role"
-                onInput={(event) => handleChange(event)}
-                value={newUser.role}
-                placeholder="Role"
-            /> */}
+        <div className="login-title">
+            <h2>Create an Account:</h2>
+        </div>
+        <div className="form-container">
+            <form className="login" onSubmit={(event) => handleFormSubmit(event)}>
+            <div className="username-login">
+                <label className="signup-label" htmlFor="name-input">Name:</label>
+                <input
+                    type="text"
+                    id= "name"
+                    onInput={(event) => handleChange(event)}
+                    value={newUser.name}
+                    placeholder="Username"
+                />
+            </div>
+                <div className="username-login">
+                    <label className="signup-label" htmlFor="age-input">Age:</label>
+                    <input
+                        type="number"
+                        id= "age"
+                        onInput={(event) => handleChange(event)}
+                        value={newUser.age}
+                        placeholder="Age"
+                    />
+                </div>
             
-            
-            <input type="submit" value={"Log in"}/>
-        </form>
+                
+                
+                <input className="login-button" type="submit" value={"Sign up"}/>
+            </form>
+        </div>
         </section>
-        );
+    );
     
 
-    return (null  );
+    
 }
  
 export default SignUpForm;

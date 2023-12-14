@@ -63,18 +63,22 @@ const LogInForm = ({setLoginInUser}) => {
         <div className="login-title">
         <h2>Log in to chatroom:</h2>
         </div>
+       
         <div className="form-container">
             <form className="login" onSubmit={(event) => handleFormSubmit(event)}>
-                <label htmlFor="name-input">Name:</label>
+                <div className="username-login">
+                <label htmlFor="name-input"></label>
                 <input
                     type="text"
                     id= "name-input"
                     onInput={(event) => updateUserName(event)}
                     value={name}
                     placeholder="Username"
-                    className="username-login"
+                    
                 />
-                <label htmlFor="password-input">Password:</label>
+                </div>
+                <div className="username-login">
+                <label htmlFor="password-input"></label>
                 <input
                     type="password"
                     id="password-input"
@@ -82,7 +86,8 @@ const LogInForm = ({setLoginInUser}) => {
                     value={password}
                     placeholder="Password"
                 />
-                <input type="submit" value={"Log in"}/>
+                </div>
+                <input className="login-button" type="submit" value={"Log in"}/>
             </form>
         </div>
         </section>
