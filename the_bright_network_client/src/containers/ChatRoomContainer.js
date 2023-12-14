@@ -217,6 +217,15 @@ const ChatRoomContainer = () => {
                     </>
                 },
                 {
+                    path: "/signup",
+                    element: <>
+                    
+                        <ClientUserContext.Provider value={clientUser}>
+                        <SignUpForm />
+                        </ClientUserContext.Provider>
+                    </>
+                },
+                {
                     path: "/chatrooms",
                     element: <>
                         <ClientUserContext.Provider value={clientUser}>
