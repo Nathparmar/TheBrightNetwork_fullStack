@@ -17,6 +17,7 @@ const Home = ({allUsers, startPrivateChat}) => {
         <>
             <Link to="/main-page">Home</Link>
         </>
+        
         <Outlet />
         </header>
         <>

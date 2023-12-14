@@ -137,6 +137,23 @@ const ChatRoomContainer = () => {
         setCurrentChatRoomName(newChat.chatroomName)
     }
 
+    const postNewUserSignUp = async (newSignUp) => {
+
+        const response = await fetch('http://localhost:8080/users',{
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(newSignUp)
+        })
+        const jsonData = await response.json();
+        setClientUser({
+            name: jsonData.name,
+            id: jsonData.id,
+            role: jsonData.role,
+          });
+        
+        alert(`Your password is : ${jsonData.id}`)
+    }
+
     const startPrivateChat = async (messagedUserId,messagedUserName) => {
         const privateChats = chatRooms.filter((chatRoom) => {
             return (chatRoom.name.includes("Private") && 
@@ -221,7 +238,7 @@ const ChatRoomContainer = () => {
                     element: <>
                     
                         <ClientUserContext.Provider value={clientUser}>
-                        <SignUpForm />
+                        <SignUpForm postNewUserSignUp={postNewUserSignUp} allUsers={allUsers}/>
                         </ClientUserContext.Provider>
                     </>
                 },
