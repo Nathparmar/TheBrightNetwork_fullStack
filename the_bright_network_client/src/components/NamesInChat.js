@@ -6,14 +6,15 @@ const NamesInChat = ({addedUsers}) => {
 
     return (
         <>
+            <h3>Chat Participants:</h3>
             <div className="names-in-chat">
-            <h3>Chat participants:</h3>
-            <div className="names-scroll">
-                <ul>
-                    {nameList}
-                </ul>
+                
+                <div className="names-scroll">
+                    <ul>
+                        {nameList}
+                    </ul>
+                </div>
             </div>
-        </div>
         </>
     );
 }

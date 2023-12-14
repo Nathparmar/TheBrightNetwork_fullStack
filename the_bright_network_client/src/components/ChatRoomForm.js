@@ -78,18 +78,20 @@ const ChatRoomForm = ({allUsers,postNewChatroom}) => {
 
     return ( 
 
-    <section>
+    <section className="chatroom-form">
+        <div className="chatroom-title">
+        <h2>Create new chatroom:</h2>
+        </div>
         
-        <h2>Log in to chatroom:</h2>
-        
-        <form onSubmit={(event) => handleFormSubmit(event)}>
-            <label htmlFor="name-input">Name:</label>
+        <form className="create-chatroom-form" onSubmit={(event) => handleFormSubmit(event)}>
+            <label htmlFor="name-input"></label>
             <input
                 type="text"
                 id= "name-input"
                 onInput={(event) => updateChatRoomName(event)}
                 value={stateChatRoom.name}
                 placeholder="Chat name"
+                className="chat-name"
             />
 
             <Multiselect 
@@ -101,12 +103,18 @@ const ChatRoomForm = ({allUsers,postNewChatroom}) => {
                 onRemove={updateAddedUser} 
                 displayValue="name" 
                 placeholder="Add users here..."
+                
             
             />
            
 
-            <input type="submit" value={"create room"}/> 
+            <input className="create-room-button" type="submit" value={"CREATE ROOM"}/> 
         </form>
+
+        <img className="bnta-banner" 
+            src="https://media.licdn.com/dms/image/C4E1BAQF4FdpCO4wXaw/company-background_10000/0/1614874706306/bright_network_technology_academy_cover?e=2147483647&v=beta&t=wNmnZAhZ0hbDoHQsnqVNftuoQbGCNksBfpaOJH8oX3k" 
+            alt="BNTA-banner"
+        />
       
         </section>
         );

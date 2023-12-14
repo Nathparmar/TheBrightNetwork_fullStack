@@ -33,11 +33,11 @@ const AddUserForm = ({postUser, usersNotInChatRoom}) => {
 
     return (
         <form className="add-user-form" onSubmit={(event) => handleChange(event)}>
-                
+            <h3>Add user to chatroom:</h3>
         <div className="adding-user-multiselect">
             <Multiselect 
                 isObject = {true}
-
+                className= "multiselect"
                 options = {userOptions}
                 selectedValues={{}} 
                 onSelect={updateAddedUser}
@@ -47,7 +47,7 @@ const AddUserForm = ({postUser, usersNotInChatRoom}) => {
             />
         </div>
 
-            <input type="submit" value={"Add user"}/> 
+            <input className="input-user" type="submit" value={"Add user"}/> 
         </form>
 
 

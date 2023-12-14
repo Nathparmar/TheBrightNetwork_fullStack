@@ -19,18 +19,22 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
             <div className="chatroom-title">
                 <h2>{currentChatRoomName}</h2>
             </div>
-    
-            <div className="submit-users-box">
-           { (currentChatRoomName && !currentChatRoomName.includes("Private")) && 
-    
-                <AddUserForm postUser={postUser} usersNotInChatRoom={usersNotInChatRoom}/>
-                }
+            <section className="chatroom-info">
+                <div>
+                    <MessageBox listOfMessages={messageData.reverse()}/>
+                    <MessageForm postMessage={postMessage}/>
+                </div>
+                <div className="submit-users-box">
+                { (currentChatRoomName && !currentChatRoomName.includes("Private")) && 
+        
+                    <AddUserForm postUser={postUser} usersNotInChatRoom={usersNotInChatRoom}/>
+                    }
                 
-                <NamesInChat addedUsers={addedUsers}/>
-            </div>
-            <MessageBox listOfMessages={messageData.reverse()}/>
-            <MessageForm postMessage={postMessage}/>
-
+                    
+                    <NamesInChat addedUsers={addedUsers}/>
+                </div>
+                
+            </section>
         </section>
     );
 }

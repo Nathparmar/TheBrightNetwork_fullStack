@@ -7,13 +7,14 @@ const Message = ({ messageContent, timeStamp, sender }) => {
     return (
     <section className="message-list">
       <div className="wrapper">
-        <div className="speechbubble">
-        <span>{localTime}</span>
+       
+        
+        <span className="username"><b>{sender}</b></span>
           <p>{messageContent}</p>
-          <span className="username">{sender}</span>
-          
+        <div className="time-div">
+        <span className="time">{localTime}</span>
         </div>
-      </div>
+         </div>
     </section>
   );
 };

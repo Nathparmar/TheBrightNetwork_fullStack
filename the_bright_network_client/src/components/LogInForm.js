@@ -58,10 +58,12 @@ const LogInForm = ({setLoginInUser}) => {
 
     return ( 
 
-    <section>
+    <section className="login-form">
         <Outlet />
+        <div className="login-title">
         <h2>Log in to chatroom:</h2>
-        <form onSubmit={(event) => handleFormSubmit(event)}>
+        </div>
+        <form className="login" onSubmit={(event) => handleFormSubmit(event)}>
             <label htmlFor="name-input">Name:</label>
             <input
                 type="text"
@@ -69,6 +71,7 @@ const LogInForm = ({setLoginInUser}) => {
                 onInput={(event) => updateUserName(event)}
                 value={name}
                 placeholder="Username"
+                className="username-login"
             />
             <label htmlFor="password-input">Password:</label>
             <input
