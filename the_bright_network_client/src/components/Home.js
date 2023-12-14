@@ -9,6 +9,7 @@ const Home = ({allUsers, startPrivateChat}) => {
 
     return ( 
         <>  
+            <section className="header-block">
             <header className="header-nav-bar">
                 <Link to="/login"><button className="header-button">Login</button></Link>
         
@@ -16,6 +17,7 @@ const Home = ({allUsers, startPrivateChat}) => {
                     
                 <Link to="/signup"><button className="header-button">Sign Up</button></Link>
             </header>
+            </section>
            
 
             <main className="home-main"> 

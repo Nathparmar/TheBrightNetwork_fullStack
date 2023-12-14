@@ -15,7 +15,7 @@ const User = ({userName,userRole,userId,startPrivateChat}) => {
             <Link to="/chatrooms">
                 <button 
                     className="user-list-btn" onClick={onButtonClick}>
-                        {userName}
+                        <b>{userName}</b>
                         <p className="user-role">{userRole}</p>
                 </button>
             </Link>

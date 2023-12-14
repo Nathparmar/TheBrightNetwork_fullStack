@@ -23,7 +23,7 @@ const ChatRoomList = ({chatRooms, clickChatRoom}) => {
             {clientUser.role === "Trainer"? <Link to="/create/chatrooms"><button>Create new chatRoom</button></Link> :null} 
 
             <section className="chat-room-body">
-            <ul>{chatRoomData}</ul>
+            {chatRoomData}
             </section>
 
             <Outlet/>
