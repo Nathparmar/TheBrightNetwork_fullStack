@@ -12,9 +12,13 @@ const User = ({userName,userRole,userId,startPrivateChat}) => {
         
         <section className="user">
         
-        
-
-        <Link to="/chatrooms"><button className="chat-room-btn" onClick={onButtonClick}>{`${userName} : ${userRole}`}</button></Link>
+            <Link to="/chatrooms">
+                <button 
+                    className="user-list-btn" onClick={onButtonClick}>
+                        {userName}
+                        <p className="user-role">{userRole}</p>
+                </button>
+            </Link>
 
         {/* <Outlet /> */}
 

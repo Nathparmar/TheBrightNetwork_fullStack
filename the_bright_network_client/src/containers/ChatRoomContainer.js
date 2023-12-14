@@ -211,7 +211,7 @@ const ChatRoomContainer = () => {
             element: <>
                     
                     <ClientUserContext.Provider value={clientUser}>
-                    <Home allUsers={allUsers} startPrivateChat={startPrivateChat}/>,
+                        <Home allUsers={allUsers} startPrivateChat={startPrivateChat}/>
                     </ClientUserContext.Provider>
                 </>,
             children: [
@@ -220,7 +220,7 @@ const ChatRoomContainer = () => {
                     element: <>
                     
                         <ClientUserContext.Provider value={clientUser}>
-                        <ChatRoomList chatRooms={chatRooms} clickChatRoom={clickChatRoom}/>
+                            <ChatRoomList chatRooms={chatRooms} clickChatRoom={clickChatRoom}/>
                         </ClientUserContext.Provider>
                     </>
                 },
@@ -229,7 +229,7 @@ const ChatRoomContainer = () => {
                     element: <>
                     
                         <ClientUserContext.Provider value={clientUser}>
-                        <LogInForm setLoginInUser={setLoginInUser} />
+                            <LogInForm setLoginInUser={setLoginInUser} />
                         </ClientUserContext.Provider>
                     </>
                 },
@@ -238,7 +238,7 @@ const ChatRoomContainer = () => {
                     element: <>
                     
                         <ClientUserContext.Provider value={clientUser}>
-                        <SignUpForm postNewUserSignUp={postNewUserSignUp} allUsers={allUsers}/>
+                            <SignUpForm postNewUserSignUp={postNewUserSignUp} allUsers={allUsers}/>
                         </ClientUserContext.Provider>
                     </>
                 },
@@ -246,15 +246,15 @@ const ChatRoomContainer = () => {
                     path: "/chatrooms",
                     element: <>
                         <ClientUserContext.Provider value={clientUser}>
-                        <MessageList 
-                            chatRoomMessages={chatRoomMessages} 
-                            postMessage={postMessage} 
-                            usersNotInChatRoom={usersNotInChatRoom} 
-                            postUser={postUser} 
-                            addedUsers={addedUsers}
-                            chatRoomId={currentChatRoom}
-                            currentChatRoomName={currentChatRoomName}
-                        />
+                            <MessageList 
+                                chatRoomMessages={chatRoomMessages} 
+                                postMessage={postMessage} 
+                                usersNotInChatRoom={usersNotInChatRoom} 
+                                postUser={postUser} 
+                                addedUsers={addedUsers}
+                                chatRoomId={currentChatRoom}
+                                currentChatRoomName={currentChatRoomName}
+                            />
                         </ClientUserContext.Provider>
                     </>
 

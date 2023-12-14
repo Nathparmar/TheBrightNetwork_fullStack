@@ -12,12 +12,14 @@ const UserList = ({allUsers, startPrivateChat}) => {
     ))
 
     return ( 
-        <section className="sidebar">
-        <li >
-            <h2 > list of users</h2>
-            {userData}
-            
-        </li>
+        <section className="body">
+            <div className="side-bar">
+                <li >
+                    <h2 className="direct-messages"> Direct Messages</h2>
+                    {userData}
+                    
+                </li>
+            </div>    
         </section>
     );
 }

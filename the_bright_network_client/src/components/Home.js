@@ -9,25 +9,24 @@ const Home = ({allUsers, startPrivateChat}) => {
 
     return ( 
         <>
-        <header>
-       
-        <>
-            <Link to="/login">Login</Link>
-        </>
-        <>
-            <Link to="/main-page">Home</Link>
-        </>
+            <header>
+                <Link to="/login">Login</Link>
+        
+                <Link to="/main-page">Home</Link>
+                    
+                <Link to="/signup">Sign Up</Link>
+            </header>
 
-        <>
-            <Link to="/signup">Sign Up</Link>
-        </>
+            <main className="home-main"> 
+                <section className="side-bar">
+                    <p className="client-name">{clientUser.name ? clientUser.name : "Not logged in"}</p>
+                    {clientUser.id? <UserList allUsers={allUsers} startPrivateChat={startPrivateChat}/>:null}
+                </section>
 
-        <Outlet />
-        </header>
-        <section className="sidebar">
-            <p className="client-name">{clientUser.name ? clientUser.name : "Not logged in"}</p>
-            {clientUser.id? <UserList allUsers={allUsers} startPrivateChat={startPrivateChat}/>:null}
-        </section>
+                <section className="home-outlet">
+                    <Outlet />
+                </section>    
+            </main>
 
         </>
 
