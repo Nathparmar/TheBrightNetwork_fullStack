@@ -28,6 +28,10 @@ const Home = ({allUsers, startPrivateChat}) => {
                 </section>    
             </main>
 
+            <footer className="footer">
+                Bright Network
+            </footer>
+
         </>
 
      );

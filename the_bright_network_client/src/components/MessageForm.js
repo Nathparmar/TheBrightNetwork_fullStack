@@ -37,21 +37,23 @@ const MessageForm = ({postMessage}) => {
     }
 
     return ( 
-
-    <section>
-        <form onSubmit={(event) => handleFormSubmit(event)}>
-            <label htmlFor="name-input"></label>
-            <input
-                type="text"
-                id= "message-content-input"
-                placeholder="Type your message here:"
-                onChange={handleChange}
-                value={stateMessage.messageContent}
-            />
-            <input type="submit" value={"Send!"}/>
-        </form>
+        <section className="input-message-box">
+            <form onSubmit={(event) => handleFormSubmit(event)}>
+                <div className="message-bar">
+                    <label htmlFor="message-input"></label>
+                    <input
+                        className="message-input"
+                        type="text"
+                        id= "message-content-input"
+                        placeholder="Type your message here:"
+                        onChange={handleChange}
+                        value={stateMessage.messageContent}
+                    />
+                    <input className="message-button" type="submit" value={"Send!"}/>
+                </div>
+            </form>
         </section>
-        );
+    );
 }
 
 export default MessageForm;

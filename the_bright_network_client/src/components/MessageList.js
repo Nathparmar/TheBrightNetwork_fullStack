@@ -1,11 +1,9 @@
+import AddUserForm from "./AddUserForm";
 import Message from "./Message";
 import MessageBox from "./MessageBox";
 import MessageForm from "./MessageForm";
-import { Multiselect } from "multiselect-react-dropdown/dist/multiselect-react-dropdown.cjs.development";
-import { useState } from "react"
+import NamesInChat from "./NamesInChat";
 const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser, addedUsers,currentChatRoomName,chatRoomId}) => {
-
-    const [usersToBeAdded, setUsersToBeAdded] = useState([])
 
     const messageData = chatRoomMessages.map((message) => (
        <Message 
@@ -16,74 +14,23 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
        />
     ))
 
-    const handleChange = (event) => {
-        event.preventDefault()
-        
-        const addingUsers = usersToBeAdded.map((user) => {
-            postUser(user.id);
-            console.log(user);
-        })
-        
-    }
-
-
-    const updateAddedUser = (event) => {
-        
-        setUsersToBeAdded([...event])
-       
-    }
-
-
-    const getNames = addedUsers.map((user) => {
-        return <li key={user.userId}>{user.name}</li>;
-    })
-    
-   
-    const userOptions = usersNotInChatRoom.map((user) => {
-        
-        return {
-            name: user.name,
-            id: user.id
-        };
-
-       
-    })
-
-
     return (
         <section>
             <div className="chatroom-title">
                 <h2>{currentChatRoomName}</h2>
             </div>
+    
+            <div className="submit-users-box">
            { (currentChatRoomName && !currentChatRoomName.includes("Private")) && 
-            
-
-            <form className="add-user-form" onSubmit={(event) => handleChange(event)}>
+    
+                <AddUserForm postUser={postUser} usersNotInChatRoom={usersNotInChatRoom}/>
+                }
                 
-            <div className="adding-user-multiselect">
-                <Multiselect 
-                    isObject = {true}
-
-                    options = {userOptions}
-                    selectedValues={{}} 
-                    onSelect={updateAddedUser}
-                    onRemove={updateAddedUser}
-                    displayValue="name" 
-                    placeholder="Click here..."
-                />
+                <NamesInChat addedUsers={addedUsers}/>
             </div>
-
-                <input type="submit" value={"Add user"}/> 
-            </form>}
-
-            
-            
             <MessageBox listOfMessages={messageData.reverse()}/>
             <MessageForm postMessage={postMessage}/>
 
-            <ul>
-                {getNames}
-            </ul>
         </section>
     );
 }
