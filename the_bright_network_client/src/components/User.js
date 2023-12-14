@@ -10,7 +10,7 @@ const User = ({userName,userRole,userId,startPrivateChat}) => {
         <>
 
         
-        <section className="chat-room">
+        <section className="user">
         
         
 

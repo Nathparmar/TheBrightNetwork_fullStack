@@ -71,17 +71,17 @@
 }
 
 .client-name{
-  display: flex;
-  align-items: left;
+  
   font-size: xx-large;
   background-color: white;
   border: none;
   color: black;
 
-  padding: 15px 32px;
+  padding: 15px 15px;
+  margin: 25px 25px 25px 25px ;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  
   border-radius: 25px;
   box-shadow: 0 9px #999;
 }
@@ -125,4 +125,26 @@ header{
 
 }
 
+.list-of-users{
+ 
+  display: inline-block;
+  background-color: rgb(24, 203, 183) ;
+}
 
+.sidebar{
+  display: inline-block;
+  background-color: rgb(24, 203, 183);
+}
+
+.user{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 30px 30px 30px 30px;
+
+}
+
+.chatroom-data{
+  display: block;
+  background-color: rgb(24, 203, 183);
+
+}

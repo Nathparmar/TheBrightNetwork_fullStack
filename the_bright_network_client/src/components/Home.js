@@ -17,12 +17,16 @@ const Home = ({allUsers, startPrivateChat}) => {
         <>
             <Link to="/main-page">Home</Link>
         </>
+        <>
+            <Link to="/signup">Sign Up</Link>
+        </>
+        
         <Outlet />
         </header>
-        <>
-            <ul className="client-name">{clientUser.name ? clientUser.name : "Not logged in"}</ul>
+        <section className="sidebar">
+            <p className="client-name">{clientUser.name ? clientUser.name : "Not logged in"}</p>
             {clientUser.id? <UserList allUsers={allUsers} startPrivateChat={startPrivateChat}/>:null}
-        </>
+        </section>
 
         </>
 
