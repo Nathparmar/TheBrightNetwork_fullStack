@@ -8,7 +8,7 @@ const Home = ({allUsers, startPrivateChat}) => {
     const clientUser = useContext(ClientUserContext);
 
     return ( 
-        <>
+        <>  
             <header className="header-nav-bar">
                 <Link to="/login"><button className="header-button">Login</button></Link>
         
@@ -16,6 +16,7 @@ const Home = ({allUsers, startPrivateChat}) => {
                     
                 <Link to="/signup"><button className="header-button">Sign Up</button></Link>
             </header>
+           
 
             <main className="home-main"> 
                 <section className="side-bar">

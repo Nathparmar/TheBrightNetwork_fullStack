@@ -150,14 +150,15 @@ header{
   
 }
 
-.user{
+/* .user{
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   padding: 20px 20px 20px 20px;
 
-}
+} */
 
-.user-list-btn{
+/* .user-list-btn{
   display: flex;
   font-size: large;
   background-color: white;
@@ -171,6 +172,26 @@ header{
   border-radius: 25px;
   box-shadow: 0 9px #999;
   width: 200px
+} */
+
+.user-list-btn{
+  font-size: large;
+  width: 12em;
+  
+  margin-right: 1em;
+  background-color: rgb(24, 203, 183);
+  border: none;
+  cursor: pointer;
+ 
+
+}
+
+.user-list-btn:hover{
+  background-color: rgb(18, 153, 137);
+}
+
+.direct-messages{
+  text-align: left;
 }
 
 .chatroom-data{
@@ -180,23 +201,37 @@ header{
 }
 
 .header-nav-bar{
-  display: inline-flex;
-  justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
   margin-bottom: 0.7em;
+  width: 17.5em;
 }
 
+
+
 .header-button{
-  /* padding: 20%; */
   width: 100%;
   height: 150%;
   text-align: center;
+  font-size: large;
   margin-right: 1.9em;
+  background-color: rgb(24, 203, 183);
+  border: none;
+  cursor: pointer;
 }
 
+.header-button:hover {
+  background-color: rgb(18, 153, 137);
+}
+
+
 .side-bar{
-  display: inline-block;
+  display: grid;
+  width: 17.5em;
   align-items: center;
   background-color: rgb(24, 203, 183);
+  
 }
 
 .home-main{
@@ -209,9 +244,7 @@ header{
   font-size: small;
 }
 
-.direct-messages{
-  text-align: center;
-}
+
 
 .chatroom-title{
   display: block;
@@ -385,7 +418,9 @@ h3{
   justify-content: center;
   flex-direction: column;
   width: 10%;
-  height: 40px
+  height: 40px;
+  
+
 }
 
 .form-container{
