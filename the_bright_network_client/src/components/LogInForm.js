@@ -63,26 +63,28 @@ const LogInForm = ({setLoginInUser}) => {
         <div className="login-title">
         <h2>Log in to chatroom:</h2>
         </div>
-        <form className="login" onSubmit={(event) => handleFormSubmit(event)}>
-            <label htmlFor="name-input">Name:</label>
-            <input
-                type="text"
-                id= "name-input"
-                onInput={(event) => updateUserName(event)}
-                value={name}
-                placeholder="Username"
-                className="username-login"
-            />
-            <label htmlFor="password-input">Password:</label>
-            <input
-                type="password"
-                id="password-input"
-                onInput={(event) => updateUserPassword(event)}
-                value={password}
-                placeholder="Password"
-            />
-            <input type="submit" value={"Log in"}/>
-        </form>
+        <div className="form-container">
+            <form className="login" onSubmit={(event) => handleFormSubmit(event)}>
+                <label htmlFor="name-input">Name:</label>
+                <input
+                    type="text"
+                    id= "name-input"
+                    onInput={(event) => updateUserName(event)}
+                    value={name}
+                    placeholder="Username"
+                    className="username-login"
+                />
+                <label htmlFor="password-input">Password:</label>
+                <input
+                    type="password"
+                    id="password-input"
+                    onInput={(event) => updateUserPassword(event)}
+                    value={password}
+                    placeholder="Password"
+                />
+                <input type="submit" value={"Log in"}/>
+            </form>
+        </div>
         </section>
         );
 }

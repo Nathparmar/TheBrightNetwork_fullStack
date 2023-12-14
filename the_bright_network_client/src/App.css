@@ -381,6 +381,13 @@ h3{
 
 .login{
   display: flex;
-  
+  justify-content: center;
+  flex-direction: column;
+  width: 22%;
   height: 40px
+}
+
+.form-container{
+  display: flex;
+  justify-content: center;
 }

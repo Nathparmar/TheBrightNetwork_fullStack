@@ -69,7 +69,7 @@ const ChatRoomContainer = () => {
         const jsonData = await response.json();
         const userChatRooms = jsonData.filter((chatRoom) => {
             const subscriptions = chatRoom.subscriptions || [];
-            return subscriptions.some((subscription) => subscription.user.id === clientUser.id);
+            return subscriptions.some((subscription) => (subscription.user.id === clientUser.id || clientUser.role == "trainer"));
         });
 
         setChatRooms([...userChatRooms]);
