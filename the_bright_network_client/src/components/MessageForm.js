@@ -49,7 +49,7 @@ const MessageForm = ({postMessage}) => {
                         onChange={handleChange}
                         value={stateMessage.messageContent}
                     />
-                    <input className="message-button" type="submit" value={"Send!"}/>
+                    <input className="message-button"  type="submit" value={"Send!"}/>
                 </div>
             </form>
         </section>
