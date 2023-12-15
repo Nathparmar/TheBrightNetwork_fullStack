@@ -212,10 +212,12 @@
   border: none;
   cursor: pointer;
   color: #FFFFFF;
-
   text-align: centre;
- 
+}
 
+.dms{
+  margin-bottom: 27em;
+ 
 }
 
 .user-list-btn:hover{
@@ -294,11 +296,7 @@
   color: #FFFFFF;
 }
 
-.adding-user-multiselect{
-  width: 20%;
-  margin-bottom: 1em;
-  display: grid;
-}
+
 
 .message-scroll{
   background-color: whitesmoke;
@@ -311,11 +309,6 @@
 
 }
 
-.add-user-form{
-  margin-bottom: 1em;
-  margin-top: 2em;
-  color: #FFFFFF;
-}
 
 .names-in-chat{
   display: flex;
@@ -441,6 +434,19 @@ h3{
   width:100%;
 }
 
+.adding-user-multiselect{
+  width: 20%;
+  margin-bottom: 1em;
+  display: grid;
+}
+
+.add-user-form{
+  margin-bottom: 1em;
+  margin-top: 2em;
+  color: black;
+}
+
+
 .create-chatroom-form{
   display: grid;
   align-items: center;
@@ -557,9 +563,4 @@ h3{
 .signup-label{
   margin-right: 1em;
 
-}
-
-.dms{
-  margin-bottom: 18em;
-  
 }
