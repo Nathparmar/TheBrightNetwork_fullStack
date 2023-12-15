@@ -61,7 +61,7 @@ const LogInForm = ({setLoginInUser}) => {
     <section className="login-form">
         <Outlet />
         <div className="login-title">
-        <h2>Log in to chatroom:</h2>
+        <h2>Log in to view Chatrooms</h2>
         </div>
        
         <div className="form-container">
@@ -74,6 +74,7 @@ const LogInForm = ({setLoginInUser}) => {
                     onInput={(event) => updateUserName(event)}
                     value={name}
                     placeholder="Username"
+                    className="name-input"
                     
                 />
                 </div>
@@ -85,6 +86,7 @@ const LogInForm = ({setLoginInUser}) => {
                     onInput={(event) => updateUserPassword(event)}
                     value={password}
                     placeholder="Password"
+                    className="name-input"
                 />
                 </div>
                 <input className="login-button" type="submit" value={"Log in"}/>

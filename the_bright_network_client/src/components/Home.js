@@ -22,7 +22,7 @@ const Home = ({allUsers, startPrivateChat}) => {
 
             <main className="home-main"> 
                 <section className="side-bar">
-                    <p className="client-name">{clientUser.name ? clientUser.name : "Not logged in"}</p>
+                    <p className="client-name"><b>{clientUser.name ? clientUser.name : "Not logged in"}</b></p>
                     {clientUser.id? <UserList allUsers={allUsers} startPrivateChat={startPrivateChat}/>:null}
                 </section>
 

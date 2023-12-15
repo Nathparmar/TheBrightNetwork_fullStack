@@ -48,7 +48,7 @@ const SignUpForm = ({postNewUserSignUp, allUsers}) => {
     <section className="login-form">
         <Outlet />
         <div className="login-title">
-            <h2>Create an Account:</h2>
+            <h2>Create an Account</h2>
         </div>
         <div className="form-container">
             <form className="login" onSubmit={(event) => handleFormSubmit(event)}>
@@ -60,6 +60,7 @@ const SignUpForm = ({postNewUserSignUp, allUsers}) => {
                     onInput={(event) => handleChange(event)}
                     value={newUser.name}
                     placeholder="Username"
+                    className="name-input"
                 />
             </div>
                 <div className="username-login">
@@ -70,6 +71,7 @@ const SignUpForm = ({postNewUserSignUp, allUsers}) => {
                         onInput={(event) => handleChange(event)}
                         value={newUser.age}
                         placeholder="Age"
+                        className="name-input"
                     />
                 </div>
             
