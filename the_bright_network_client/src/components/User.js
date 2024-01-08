@@ -1,4 +1,4 @@
-import {Link, Outlet} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const User = ({userName,userRole,userId,startPrivateChat}) => {
     
@@ -20,7 +20,6 @@ const User = ({userName,userRole,userId,startPrivateChat}) => {
                 </button>
             </Link>
 
-        {/* <Outlet /> */}
 
         </section>
 

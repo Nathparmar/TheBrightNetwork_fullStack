@@ -3,7 +3,7 @@ import Message from "./Message";
 import MessageBox from "./MessageBox";
 import MessageForm from "./MessageForm";
 import NamesInChat from "./NamesInChat";
-const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser, addedUsers,currentChatRoomName,chatRoomId}) => {
+const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser, addedUsers,currentChatRoomName}) => {
 
     const messageData = chatRoomMessages.map((message) => (
        <Message 

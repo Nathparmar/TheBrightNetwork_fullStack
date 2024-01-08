@@ -10,7 +10,6 @@ const AddUserForm = ({postUser, usersNotInChatRoom}) => {
 
         const addingUsers = usersToBeAdded.map((user) => {
             postUser(user.id);
-            console.log(user);
         })   
     }
 

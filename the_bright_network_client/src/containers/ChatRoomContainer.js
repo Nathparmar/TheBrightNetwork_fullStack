@@ -1,9 +1,8 @@
-import { useEffect, useState ,useContext, createContext } from "react";
+import { useEffect, useState, createContext } from "react";
 import SignUpForm from "../components/SignUpForm";
 import LogInForm from "../components/LogInForm";
 import ChatRoomList from "../components/ChatRoomList";
-import { createBrowserRouter, RouterProvider, useNavigate } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "../components/Home";
 import MessageList from "../components/MessageList";
 import ChatRoomForm from "../components/ChatRoomForm";
@@ -105,7 +104,6 @@ const ChatRoomContainer = () => {
         } catch (e) {
             const response = await fetch(`http://localhost:8080/chatrooms/${currentChatRoom}`);
             const jsonData = await response.json();
-            //onsole.log(jsonData.s);
             const idOfUserInChat = jsonData.subscriptions[0].user.id //get ID of exisiting user to allow admin to load messages
 
             const adminResponse = await fetch(`http://localhost:8080/chatrooms/${currentChatRoom}/messages?userId=${idOfUserInChat}`,{
@@ -256,7 +254,7 @@ const ChatRoomContainer = () => {
                     element: <>
                     
                         <ClientUserContext.Provider value={clientUser}>
-                            <SignUpForm postNewUserSignUp={postNewUserSignUp} allUsers={allUsers}/>
+                            <SignUpForm postNewUserSignUp={postNewUserSignUp}/>
                         </ClientUserContext.Provider>
                     </>
                 },
@@ -270,7 +268,6 @@ const ChatRoomContainer = () => {
                                 usersNotInChatRoom={usersNotInChatRoom} 
                                 postUser={postUser} 
                                 addedUsers={addedUsers}
-                                chatRoomId={currentChatRoom}
                                 currentChatRoomName={currentChatRoomName}
                             />
                         </ClientUserContext.Provider>

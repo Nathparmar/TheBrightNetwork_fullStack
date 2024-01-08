@@ -32,8 +32,3 @@ const ChatRoomList = ({chatRooms, clickChatRoom}) => {
 }
 
 export default ChatRoomList;
-
-
-//         if (!chatRoom.name.includes("(Private)")){
-    //         <ChatRoom key={chatRoom.id} chatRoomName={chatRoom.name} chatRoomId = {chatRoom.id} clickChatRoom={clickChatRoom}/>
-    //     }

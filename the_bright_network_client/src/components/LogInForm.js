@@ -52,8 +52,6 @@ const LogInForm = ({setLoginInUser}) => {
 
         setName("");
         setPassword("");
-        // onNewUserSubmission(newUser);
-        console.log(newUser);
     }
 
     return ( 
