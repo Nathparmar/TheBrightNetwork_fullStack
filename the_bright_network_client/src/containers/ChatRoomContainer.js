@@ -13,20 +13,17 @@ export const ClientUserContext = createContext();
 const ChatRoomContainer = () => {
     
     const [clientUser,setClientUser] = useState([
-        
         {   
             name: null,
             id: null,
             role: null
-
         }
     ]);
+
     const [chatRooms,setChatRooms] = useState([]);
     const [allUsers,setAllUsers] = useState([]); 
     const [currentChatRoom, setCurrentChatRoom] = useState(null);
-    
     const [currentChatRoomName, setCurrentChatRoomName] = useState(null);
-
     const [chatRoomMessages, setChatRoomMessages] = useState([]);
     const [usersNotInChatRoom,setUsersNotInChatRoom] = useState([]);
     const [addedUsers, setAddedUsers] = useState([]);
@@ -35,8 +32,7 @@ const ChatRoomContainer = () => {
         const response = await fetch(`http://localhost:8080/chatrooms/${currentChatRoom}/users`);
         const jsonData = await response.json();
 
-        const unAddedUsers = allUsers.filter((user) => {
-            
+        const unAddedUsers = allUsers.filter((user) => {            
             return !(jsonData.some((chatUser) => user.id === chatUser.userId));
         });
         
@@ -58,9 +54,7 @@ const ChatRoomContainer = () => {
             name: jsonData.name,
             id: jsonData.id,
             role: jsonData.role,
-          });        
-      
-        
+          });          
     }
     
     const getAllUserChatRooms = async () => {
@@ -70,8 +64,6 @@ const ChatRoomContainer = () => {
             const subscriptions = chatRoom.subscriptions || [];
             return subscriptions.some((subscription) => (subscription.user.id === clientUser.id || (clientUser.role == "Trainer" && !chatRoom.name.includes("Private"))));
         });
-        console.log(userChatRooms);
-        console.log(clientUser);
         setChatRooms([...userChatRooms]);
     }
 
@@ -196,9 +188,7 @@ const ChatRoomContainer = () => {
         let foundChatRoom = chatRooms.find((chatRoom) => chatRoom.id === chatRoomId);
         
         if (foundChatRoom){
-            console.log(foundChatRoom.name);
             setCurrentChatRoomName(foundChatRoom.name)
-            
         }
     };
 
