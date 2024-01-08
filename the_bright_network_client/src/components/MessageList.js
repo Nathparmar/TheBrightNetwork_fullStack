@@ -29,8 +29,6 @@ const MessageList = ({chatRoomMessages, postMessage,usersNotInChatRoom,postUser,
         
                     <AddUserForm postUser={postUser} usersNotInChatRoom={usersNotInChatRoom}/>
                     }
-                
-                    
                     <NamesInChat addedUsers={addedUsers}/>
                 </div>
                 

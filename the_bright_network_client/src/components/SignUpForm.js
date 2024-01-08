@@ -52,17 +52,17 @@ const SignUpForm = ({postNewUserSignUp}) => {
         </div>
         <div className="form-container">
             <form className="login" onSubmit={(event) => handleFormSubmit(event)}>
-            <div className="username-login">
-                <label className="signup-label" htmlFor="name-input">Name:</label>
-                <input
-                    type="text"
-                    id= "name"
-                    onInput={(event) => handleChange(event)}
-                    value={newUser.name}
-                    placeholder="Username"
-                    className="name-input"
-                />
-            </div>
+                <div className="username-login">
+                    <label className="signup-label" htmlFor="name-input">Name:</label>
+                    <input
+                        type="text"
+                        id= "name"
+                        onInput={(event) => handleChange(event)}
+                        value={newUser.name}
+                        placeholder="Username"
+                        className="name-input"
+                    />
+                </div>
                 <div className="username-login">
                     <label className="signup-label" htmlFor="age-input">Age:</label>
                     <input
@@ -74,17 +74,12 @@ const SignUpForm = ({postNewUserSignUp}) => {
                         className="name-input"
                     />
                 </div>
-            
-                
-                
+        
                 <input className="login-button" type="submit" value={"Sign up"}/>
             </form>
         </div>
         </section>
     );
-    
-
-    
 }
  
 export default SignUpForm;

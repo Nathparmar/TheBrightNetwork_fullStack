@@ -192,14 +192,10 @@ const ChatRoomContainer = () => {
         }
     };
 
-
-
     useEffect(() => {
         clientUserId();
         getAllUserChatRooms();
         getAllUsers();
-        
-
     },[clientUser])
 
     useEffect(() => {
@@ -208,14 +204,13 @@ const ChatRoomContainer = () => {
             getUsersNotInChatRoom();
             getChatRoomNameById(currentChatRoom)
         }
-        
     },[currentChatRoom])
 
     const chatRoomRoutes = createBrowserRouter([
         {
             path: "/",
             element: <>
-                    
+
                     <ClientUserContext.Provider value={clientUser}>
                         <Home allUsers={allUsers} startPrivateChat={startPrivateChat}/>
                     </ClientUserContext.Provider>
@@ -268,10 +263,10 @@ const ChatRoomContainer = () => {
                     path: "/create/chatrooms",
                     element: <>
                         <ClientUserContext.Provider value={clientUser}>
-                        <ChatRoomForm
-                            allUsers={allUsers}
-                            postNewChatroom = {postNewChatroom}
-                        />
+                            <ChatRoomForm
+                                allUsers={allUsers}
+                                postNewChatroom = {postNewChatroom}
+                            />
                         </ClientUserContext.Provider>
                     </>
                 }

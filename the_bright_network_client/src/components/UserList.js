@@ -11,10 +11,8 @@ const UserList = ({allUsers, startPrivateChat}) => {
         <section className="body">
             <div className="side-bar">
                 <div className="dms">
-            
                     <h2 className="direct-messages"> Direct Messages</h2>
                     {userData}
-                 
                 </div>
             </div>    
         </section>

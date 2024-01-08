@@ -5,15 +5,15 @@ const Message = ({ messageContent, timeStamp, sender }) => {
       
   
     return (
-      <section className="message-list">
-        <div className="wrapper">
-          <span className="username"><b>{sender}</b></span>
-            <p>{messageContent}</p>
-          <div className="time-div">
-            <span className="time">{localTime}</span>
-          </div>
-        </div>
-      </section>
+        <section className="message-list">
+            <div className="wrapper">
+                <span className="username"><b>{sender}</b></span>
+                <p>{messageContent}</p>
+                <div className="time-div">
+                   <span className="time">{localTime}</span>
+                </div>
+            </div>
+        </section>
     );
 };
 

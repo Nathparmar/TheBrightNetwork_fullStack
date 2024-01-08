@@ -8,11 +8,8 @@ const NamesInChat = ({addedUsers}) => {
         <>
             <h3>Chat Participants:</h3>
             <div className="names-in-chat">
-                
                 <div className="names-scroll">
-                    
                         {nameList}
-                    
                 </div>
             </div>
         </>
